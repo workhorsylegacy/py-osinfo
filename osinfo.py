@@ -178,8 +178,10 @@ def get_os_info():
 	return (os_type, os_brand, os_release)
 
 if __name__ == '__main__':
-	print(get_os_info())
-
+	info = get_os_info()
+	print('type: {0}'.format(info[0]))
+	print('brand: {0}'.format(info[1]))
+	print('release: {0}'.format(info[2]))
 
 
 
