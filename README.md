@@ -20,9 +20,16 @@ Run as a library
 -----
 
     import osinfo
-    info = osinfo.get_os_info()
-    print(info)
-    # ('Linux', 'Slackware', '14.1')
+    os_type, os_brand, os_release = osinfo.get_os_info()
+
+    if os_type in osinfo.OSType.linux:
+        print("Looks like you're using Linux.")
+
+    if os_brand in osinfo.OSBrand.CentOS:
+        print("Looks like you're using CentOS.")
+
+    if os_release == '99.01':
+        print("OMG CentOS from 2099. Can I see the sorce code?")
 
 
 Outputs
