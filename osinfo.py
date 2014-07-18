@@ -132,7 +132,6 @@ def _get_os_brand(os_type):
 	if os_type in OSType.linux:
 		linux_dist = platform.linux_distribution()
 		name = linux_dist[0].lower() or dist[0].lower()
-		print(name)
 
 		if name in 'centos':
 			os_brand = OSBrand.Centos[0]
