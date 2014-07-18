@@ -15,6 +15,9 @@ Outputs
 Ubuntu 14.04
 ('Linux', 'Ubuntu', '14.04')
 
+FreeBSD 10
+('BSD', 'FreeBSD', '10.0')
+
 Please submit a pull request with the results for your favorite OS!
 
 

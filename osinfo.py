@@ -137,18 +137,18 @@ def _get_os_brand(os_type):
 		elif name in 'ubuntu':
 			return OSBrand.Ubuntu[0]
 	elif os_type in OSType.bsd:
-		name = dist[0].lower() or platform.system()
+		name = dist[0].lower() or platform.system().lower()
 
 		if name in 'dragonflybsd':
-			return OSBrand.DragonFlyBSD
+			return OSBrand.DragonFlyBSD[0]
 		elif name in 'freebsd':
-			return OSBrand.FreeBSD
+			return OSBrand.FreeBSD[0]
 		elif name in 'netbsd':
-			return OSBrand.NetBSD
+			return OSBrand.NetBSD[0]
 		elif name in 'openbsd':
-			return OSBrand.OpenBSD
+			return OSBrand.OpenBSD[0]
 		elif name in 'pcbsd':
-			return OSBrand.PCBSD
+			return OSBrand.PCBSD[0]
 
 	return OSBrand.unknown[0]
 
