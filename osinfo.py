@@ -125,7 +125,6 @@ def _get_os_type():
 	return os_type
 
 def _get_os_brand(os_type):
-	os_brand = OSBrand.unknown[0]
 	dist = platform.dist()
 
 	# Figure out the brand
@@ -134,11 +133,24 @@ def _get_os_brand(os_type):
 		name = linux_dist[0].lower() or dist[0].lower()
 
 		if name in 'centos':
-			os_brand = OSBrand.Centos[0]
+			return OSBrand.CentOS[0]
 		elif name in 'ubuntu':
-			os_brand = OSBrand.Ubuntu[0]
+			return OSBrand.Ubuntu[0]
+	elif os_type in OSType.bsd:
+		name = dist[0].lower() or platform.system()
 
-	return os_brand
+		if name in 'dragonflybsd':
+			return OSBrand.DragonFlyBSD
+		elif name in 'freebsd':
+			return OSBrand.FreeBSD
+		elif name in 'netbsd':
+			return OSBrand.NetBSD
+		elif name in 'openbsd':
+			return OSBrand.OpenBSD
+		elif name in 'pcbsd':
+			return OSBrand.PCBSD
+
+	return OSBrand.unknown[0]
 
 def _get_os_release(os_type):
 	os_release = 'unknown'
