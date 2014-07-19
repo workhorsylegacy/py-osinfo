@@ -41,17 +41,23 @@ __Crunch Bang__
     brand: CrunchBang
     release: 7.5
 
-__Ubuntu 14.04__
-
-    type: Linux
-    brand: Ubuntu
-    release: 14.04
-
 __FreeBSD 10__
 
     type: BSD
     brand: FreeBSD
     release: 10.0
+
+__Mac OS X__
+
+    type: Darwin
+    brand: OSX
+    release: 10.9.4
+
+__Ubuntu 14.04__
+
+    type: Linux
+    brand: Ubuntu
+    release: 14.04
 
 __Windows 7__
 
@@ -59,11 +65,6 @@ __Windows 7__
     brand: Windows7
     release: 6.1.7601
 
-__Mac OS X__
-
-    type: Darwin
-    brand: OSX
-    release: 10.9.4
 
 Please submit a pull request with the results for your favorite OS!
 
