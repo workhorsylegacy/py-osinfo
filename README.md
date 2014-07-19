@@ -53,6 +53,12 @@ __Windows 7__
     brand: Windows7
     release: 6.1.7601
 
+__Mac OS X__
+
+    type: Darwin
+    brand: OSX
+    release: 10.9.4
+
 Please submit a pull request with the results for your favorite OS!
 
 

@@ -77,6 +77,7 @@ class OSBrand(object):
 	OpenSolaris = ['OpenSolaris']
 	openSUSE = ['openSUSE']
 	OracleLinux = ['OracleLinux']
+	OSX = ['OSX']
 	Parsix = ['Parsix']
 	PeppermintOS = ['PeppermintOS']
 	PCBSD = ['PCBSD']
@@ -152,6 +153,10 @@ def _get_os_brand(os_type):
 			return OSBrand.OpenBSD[0]
 		elif name in 'pcbsd':
 			return OSBrand.PCBSD[0]
+	elif os_type in OSType.darwin:
+		name = platform.mac_ver()[0].lower()
+		if name.startswith('10'):
+			return OSBrand.OSX
 	elif os_type in OSType.windows:
 		name = platform.release().lower()
 
@@ -176,12 +181,14 @@ def _get_os_release(os_type):
 	elif os_type in OSType.linux:
 		linux_dist = platform.linux_distribution()
 		os_release = linux_dist[1].lower() or dist[1].lower()
+	elif os_type in OSType.darwin:
+		os_release = platform.mac_ver()[0].lower()
+		#print(platform.release()) # Kernel version: 13.3.0
 	elif os_type in OSType.windows:
 		dist = platform.version().lower()
 		os_release = dist
 
 	#cygwin = ['Cygwin']
-	#darwin = ['Darwin']
 	#solaris = ['Solaris']
 
 	return os_release
