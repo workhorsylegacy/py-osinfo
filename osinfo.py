@@ -30,18 +30,18 @@ import platform
 
 
 class OSType(object):
-	bsd = ['BSD']
-	cygwin = ['Cygwin']
-	darwin = ['Darwin']
-	linux = ['Linux']
-	solaris = ['Solaris']
-	windows = ['Windows']
+	BSD = ['BSD']
+	Cygwin = ['Cygwin']
+	Darwin = ['Darwin']
+	Linux = ['Linux']
+	Solaris = ['Solaris']
+	Windows = ['Windows']
 
 	unknown = ['Unknown']
 
-	withoutRoot = [windows, cygwin]
-	unix = [bsd, darwin, solaris]
-	nix = [bsd, darwin, linux, solaris]
+	withoutRoot = [Cygwin, Windows]
+	unix = [BSD, Darwin, Solaris]
+	nix = [BSD, Darwin, Linux, Solaris]
 
 class OSBrand(object):
 	Arch = ['Arch']
@@ -114,17 +114,17 @@ def _get_os_type():
 	# Figure out the general OS type
 	uname = platform.system().lower()
 	if 'bsd' in uname:
-		os_type = OSType.bsd[0]
+		os_type = OSType.BSD[0]
 	elif 'cygwin' in uname:
-		os_type = OSType.cygwin[0]
+		os_type = OSType.Cygwin[0]
 	elif 'darwin' in uname:
-		os_type = OSType.darwin[0]
+		os_type = OSType.Darwin[0]
 	elif 'linux' in uname:
-		os_type = OSType.linux[0]
+		os_type = OSType.Linux[0]
 	elif 'solaris' in uname or 'sunos' in uname:
-		os_type = OSType.solaris[0]
+		os_type = OSType.Solaris[0]
 	elif 'windows' in uname:
-		os_type = OSType.windows[0]
+		os_type = OSType.Windows[0]
 
 	return os_type
 
@@ -132,15 +132,7 @@ def _get_os_brand(os_type):
 	dist = platform.dist()
 
 	# Figure out the brand
-	if os_type in OSType.linux:
-		linux_dist = platform.linux_distribution()
-		name = linux_dist[0].lower() or dist[0].lower()
-
-		if name in 'centos':
-			return OSBrand.CentOS[0]
-		elif name in 'ubuntu':
-			return OSBrand.Ubuntu[0]
-	elif os_type in OSType.bsd:
+	if os_type in OSType.BSD:
 		name = dist[0].lower() or platform.system().lower()
 
 		if name in 'dragonflybsd':
@@ -153,15 +145,23 @@ def _get_os_brand(os_type):
 			return OSBrand.OpenBSD[0]
 		elif name in 'pcbsd':
 			return OSBrand.PCBSD[0]
-	elif os_type in OSType.darwin:
+	elif os_type in OSType.Darwin:
 		name = platform.mac_ver()[0].lower()
 		if name.startswith('10'):
-			return OSBrand.OSX
-	elif os_type in OSType.solaris:
+			return OSBrand.OSX[0]
+	elif os_type in OSType.Linux:
+		linux_dist = platform.linux_distribution()
+		name = linux_dist[0].lower() or dist[0].lower()
+
+		if name in 'centos':
+			return OSBrand.CentOS[0]
+		elif name in 'ubuntu':
+			return OSBrand.Ubuntu[0]
+	elif os_type in OSType.Solaris:
 		ver = platform.version().lower()
 		if ver.startswith('oi_'):
-			return OSBrand.OpenIndiana
-	elif os_type in OSType.windows:
+			return OSBrand.OpenIndiana[0]
+	elif os_type in OSType.Windows:
 		name = platform.release().lower()
 
 		if name in 'xp':
@@ -180,18 +180,18 @@ def _get_os_release(os_type):
 	dist = platform.dist()
 
 	# Figure out the release
-	if os_type in OSType.bsd:
+	if os_type in OSType.BSD:
 		os_release = platform.release().lower().rstrip('-release')
-	elif os_type in OSType.linux:
+	elif os_type in OSType.Linux:
 		linux_dist = platform.linux_distribution()
 		os_release = linux_dist[1].lower() or dist[1].lower()
-	elif os_type in OSType.darwin:
+	elif os_type in OSType.Darwin:
 		os_release = platform.mac_ver()[0].lower()
 		#print(platform.release()) # Kernel version: 13.3.0
-	elif os_type in OSType.solaris:
+	elif os_type in OSType.Solaris:
 		ver = platform.version().lower()
 		os_release = ver.lstrip('oi_')
-	elif os_type in OSType.windows:
+	elif os_type in OSType.Windows:
 		dist = platform.version().lower()
 		os_release = dist
 
