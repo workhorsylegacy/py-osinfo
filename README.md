@@ -35,6 +35,12 @@ Run as a library
 Outputs
 -----
 
+__Crunch Bang__
+
+    type: Linux
+    brand: CrunchBang
+    release: 7.5
+
 __Ubuntu 14.04__
 
     type: Linux
