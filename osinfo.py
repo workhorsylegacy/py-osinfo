@@ -121,7 +121,7 @@ def _get_os_type():
 		os_type = OSType.darwin[0]
 	elif 'linux' in uname:
 		os_type = OSType.linux[0]
-	elif 'solaris' in uname:
+	elif 'solaris' in uname or 'sunos' in uname:
 		os_type = OSType.solaris[0]
 	elif 'windows' in uname:
 		os_type = OSType.windows[0]
@@ -157,6 +157,10 @@ def _get_os_brand(os_type):
 		name = platform.mac_ver()[0].lower()
 		if name.startswith('10'):
 			return OSBrand.OSX
+	elif os_type in OSType.solaris:
+		ver = platform.version().lower()
+		if ver.startswith('oi_'):
+			return OSBrand.OpenIndiana
 	elif os_type in OSType.windows:
 		name = platform.release().lower()
 
@@ -184,12 +188,14 @@ def _get_os_release(os_type):
 	elif os_type in OSType.darwin:
 		os_release = platform.mac_ver()[0].lower()
 		#print(platform.release()) # Kernel version: 13.3.0
+	elif os_type in OSType.solaris:
+		ver = platform.version().lower()
+		os_release = ver.lstrip('oi_')
 	elif os_type in OSType.windows:
 		dist = platform.version().lower()
 		os_release = dist
 
 	#cygwin = ['Cygwin']
-	#solaris = ['Solaris']
 
 	return os_release
 
