@@ -98,7 +98,10 @@ class OSBrand(object):
 	UbuntuStudio = ['UbuntuStudio']
 	UltimateEdition = ['UltimateEdition']
 	Vector = ['Vector']
-	Windows = ['Windows']
+	WindowsXP = ['WindowsXP']
+	WindowsVista = ['WindowsVista']
+	Windows7 = ['Windows7']
+	Windows8 = ['Windows8']
 	Xubuntu = ['Xubuntu']
 	Zorin = ['Zorin']
 
@@ -149,6 +152,17 @@ def _get_os_brand(os_type):
 			return OSBrand.OpenBSD[0]
 		elif name in 'pcbsd':
 			return OSBrand.PCBSD[0]
+	elif os_type in OSType.windows:
+		name = platform.release().lower()
+
+		if name in 'xp':
+			return OSBrand.WindowsXP[0]
+		elif name in 'vista':
+			return OSBrand.WindowsVista[0]
+		elif name in '7':
+			return OSBrand.Windows7[0]
+		elif name in '8':
+			return OSBrand.Windows8[0]
 
 	return OSBrand.unknown[0]
 
@@ -162,11 +176,13 @@ def _get_os_release(os_type):
 	elif os_type in OSType.linux:
 		linux_dist = platform.linux_distribution()
 		os_release = linux_dist[1].lower() or dist[1].lower()
+	elif os_type in OSType.windows:
+		dist = platform.version().lower()
+		os_release = dist
 
 	#cygwin = ['Cygwin']
 	#darwin = ['Darwin']
 	#solaris = ['Solaris']
-	#windows = ['Windows']
 
 	return os_release
 

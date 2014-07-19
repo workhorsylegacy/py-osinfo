@@ -47,6 +47,12 @@ __FreeBSD 10__
     brand: FreeBSD
     release: 10.0
 
+__Windows 7__
+
+    type: Windows
+    brand: Windows7
+    release: 6.1.7601
+
 Please submit a pull request with the results for your favorite OS!
 
 
