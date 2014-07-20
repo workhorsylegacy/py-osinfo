@@ -41,6 +41,12 @@ __Crunch Bang__
     brand: CrunchBang
     release: 7.5
 
+__Fedora 20__
+
+    type: Linux
+    brand: Fedora
+    release: 20	
+
 __FreeBSD 10__
 
     type: BSD

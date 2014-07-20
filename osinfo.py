@@ -159,6 +159,8 @@ def _get_os_brand(os_type):
 			return OSBrand.Debian[0]
 		elif name in 'crunchbang':
 			return OSBrand.CrunchBang[0]
+		elif name in 'fedora':
+			return OSBrand.Fedora[0]
 		elif name in 'ubuntu':
 			return OSBrand.Ubuntu[0]
 	elif os_type in OSType.Solaris:
