@@ -26,6 +26,7 @@
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
+import os
 import platform
 
 
@@ -150,6 +151,12 @@ def _get_os_brand(os_type):
 		if name.startswith('10'):
 			return OSBrand.OSX[0]
 	elif os_type in OSType.Linux:
+		if os.path.isfile('/etc/lsb-release-crunchbang'):
+			with open('/etc/lsb-release-crunchbang', 'r') as f:
+				lsb = f.read().lower()
+				if lsb and lsb.split('distrib_id=')[1] == 'crunchbang':
+					return OSBrand.CrunchBang[0]
+
 		linux_dist = platform.linux_distribution()
 		name = linux_dist[0].lower() or dist[0].lower()
 
@@ -157,8 +164,6 @@ def _get_os_brand(os_type):
 			return OSBrand.CentOS[0]
 		elif name in 'debian':
 			return OSBrand.Debian[0]
-		elif name in 'crunchbang':
-			return OSBrand.CrunchBang[0]
 		elif name in 'fedora':
 			return OSBrand.Fedora[0]
 		elif name in 'ubuntu':
@@ -189,6 +194,12 @@ def _get_os_release(os_type):
 	if os_type in OSType.BSD:
 		os_release = platform.release().lower().rstrip('-release')
 	elif os_type in OSType.Linux:
+		if os.path.isfile('/etc/lsb-release-crunchbang'):
+			with open('/etc/lsb-release-crunchbang', 'r') as f:
+				lsb = f.read().lower()
+				if lsb:
+					return lsb.split('distrib_release=')[1]
+
 		linux_dist = platform.linux_distribution()
 		os_release = linux_dist[1].lower() or dist[1].lower()
 	elif os_type in OSType.Darwin:
