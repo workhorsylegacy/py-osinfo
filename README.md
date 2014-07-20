@@ -39,7 +39,7 @@ __Crunch Bang__
 
     type: Linux
     brand: CrunchBang
-    release: 7.5
+    release: 11
 
 __Fedora 20__
 
