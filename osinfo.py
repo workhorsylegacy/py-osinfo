@@ -154,7 +154,7 @@ def _get_os_brand(os_type):
 		if os.path.isfile('/etc/lsb-release-crunchbang'):
 			with open('/etc/lsb-release-crunchbang', 'r') as f:
 				lsb = f.read().lower()
-				if lsb and lsb.split('distrib_id=')[1] == 'crunchbang':
+				if lsb and lsb.split('distrib_id=')[1].startswith('crunchbang'):
 					return OSBrand.CrunchBang[0]
 
 		linux_dist = platform.linux_distribution()
@@ -198,7 +198,7 @@ def _get_os_release(os_type):
 			with open('/etc/lsb-release-crunchbang', 'r') as f:
 				lsb = f.read().lower()
 				if lsb:
-					return lsb.split('distrib_release=')[1]
+					return lsb.split('distrib_release=')[1].split("\n")[0]
 
 		linux_dist = platform.linux_distribution()
 		os_release = linux_dist[1].lower() or dist[1].lower()
