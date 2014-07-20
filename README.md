@@ -53,6 +53,12 @@ __FreeBSD 10__
     brand: FreeBSD
     release: 10.0
 
+__Linux Mint__
+
+    type: Linux
+    brand: LinuxMint
+    release: 10.9.4
+
 __Mac OS X__
 
     type: Darwin

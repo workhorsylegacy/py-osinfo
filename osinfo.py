@@ -65,13 +65,13 @@ class OSBrand(object):
 	Kali = ['Kali']
 	KNOPPIX = ['KNOPPIX']
 	Kubuntu = ['Kubuntu']
+	LinuxMint = ['LinuxMint']
 	Lubuntu = ['Lubuntu']
 	LXLE = ['LXLE']
 	MacOS = ['MacOS']
 	Mageia = ['Mageia']
 	Manjaro = ['Manjaro']
 	MEPIS = ['MEPIS']
-	Mint = ['Mint']
 	NetBSD = ['NetBSD']
 	OpenBSD = ['OpenBSD']
 	OpenIndiana = ['OpenIndiana']
@@ -166,6 +166,8 @@ def _get_os_brand(os_type):
 			return OSBrand.Debian[0]
 		elif name in 'fedora':
 			return OSBrand.Fedora[0]
+		elif name in 'linuxmint':
+			return OSBrand.LinuxMint[0]
 		elif name in 'ubuntu':
 			return OSBrand.Ubuntu[0]
 	elif os_type in OSType.Solaris:
