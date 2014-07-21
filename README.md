@@ -71,6 +71,12 @@ __Open Indiana__
     brand: OpenIndiana
     release: 151a3
 
+__open SUSE__
+
+    type: Linux
+    brand: openSUSE
+    release: 13.1
+
 __Ubuntu 14.04__
 
     type: Linux

@@ -159,6 +159,7 @@ def _get_os_brand(os_type):
 
 		linux_dist = platform.linux_distribution()
 		name = linux_dist[0].lower() or dist[0].lower()
+		name = name.strip()
 
 		if name in 'centos':
 			return OSBrand.CentOS[0]
@@ -168,6 +169,8 @@ def _get_os_brand(os_type):
 			return OSBrand.Fedora[0]
 		elif name in 'linuxmint':
 			return OSBrand.LinuxMint[0]
+		elif name in 'suse' or name in 'opensuse':
+			return OSBrand.openSUSE[0]
 		elif name in 'ubuntu':
 			return OSBrand.Ubuntu[0]
 	elif os_type in OSType.Solaris:
