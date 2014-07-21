@@ -7,13 +7,13 @@ Py-osinfo should work without any extra programs or libraries, beyond
 what your OS provides. The goal is for this to work on every OS that Python 
 supports.
 
-Run as script
+Run as a script
 -----
 
-    python osinfo.py
-    # type: Linux
-    # brand: Slackware
-    # release: 14.1
+    $ python osinfo.py
+    type: Linux
+    brand: Slackware
+    release: 14.1
 
 
 Run as a library
