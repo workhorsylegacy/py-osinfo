@@ -207,7 +207,7 @@ def _get_os_release(os_type):
 		elif os.path.isfile('/etc/sabayon-edition'):
 			with open('/etc/sabayon-edition', 'r') as f:
 				data = f.read().lower().strip().split()
-				if data and data.length > 2:
+				if data and len(data) > 2:
 					os_release = data[2]
 		else:
 			linux_dist = platform.linux_distribution()
