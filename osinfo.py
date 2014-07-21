@@ -113,7 +113,7 @@ def _get_os_type():
 	os_type = OSType.unknown[0]
 
 	# Figure out the general OS type
-	uname = platform.system().lower()
+	uname = platform.system().lower().strip()
 	if 'bsd' in uname:
 		os_type = OSType.BSD[0]
 	elif 'cygwin' in uname:
@@ -135,6 +135,7 @@ def _get_os_brand(os_type):
 	# Figure out the brand
 	if os_type in OSType.BSD:
 		name = dist[0].lower() or platform.system().lower()
+		name = name.strip()
 
 		if name in 'dragonflybsd':
 			return OSBrand.DragonFlyBSD[0]
@@ -147,7 +148,7 @@ def _get_os_brand(os_type):
 		elif name in 'pcbsd':
 			return OSBrand.PCBSD[0]
 	elif os_type in OSType.MacOS:
-		name = platform.mac_ver()[0].lower()
+		name = platform.mac_ver()[0].lower().strip()
 		if name.startswith('10'):
 			return OSBrand.OSX[0]
 	elif os_type in OSType.Linux:
@@ -174,11 +175,11 @@ def _get_os_brand(os_type):
 		elif name in 'ubuntu':
 			return OSBrand.Ubuntu[0]
 	elif os_type in OSType.Solaris:
-		ver = platform.version().lower()
+		ver = platform.version().lower().strip()
 		if ver.startswith('oi_'):
 			return OSBrand.OpenIndiana[0]
 	elif os_type in OSType.Windows:
-		name = platform.release().lower()
+		name = platform.release().lower().strip()
 
 		if name in 'xp':
 			return OSBrand.WindowsXP[0]
@@ -219,6 +220,7 @@ def _get_os_release(os_type):
 
 	#cygwin = ['Cygwin']
 
+	os_release = os_release.strip()
 	return os_release
 
 def get_os_info():
