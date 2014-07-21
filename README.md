@@ -61,7 +61,7 @@ __Linux Mint__
 
 __Mac OS X__
 
-    type: Darwin
+    type: MacOS
     brand: OSX
     release: 10.9.4
 

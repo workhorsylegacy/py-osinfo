@@ -33,7 +33,7 @@ import platform
 class OSType(object):
 	BSD = ['BSD']
 	Cygwin = ['Cygwin']
-	Darwin = ['Darwin']
+	MacOS = ['MacOS']
 	Linux = ['Linux']
 	Solaris = ['Solaris']
 	Windows = ['Windows']
@@ -41,8 +41,8 @@ class OSType(object):
 	unknown = ['Unknown']
 
 	withoutRoot = [Cygwin, Windows]
-	unix = [BSD, Darwin, Solaris]
-	nix = [BSD, Darwin, Linux, Solaris]
+	unix = [BSD, MacOS, Solaris]
+	nix = [BSD, Linux, MacOS, Solaris]
 
 class OSBrand(object):
 	Arch = ['Arch']
@@ -119,7 +119,7 @@ def _get_os_type():
 	elif 'cygwin' in uname:
 		os_type = OSType.Cygwin[0]
 	elif 'darwin' in uname:
-		os_type = OSType.Darwin[0]
+		os_type = OSType.MacOS[0]
 	elif 'linux' in uname:
 		os_type = OSType.Linux[0]
 	elif 'solaris' in uname or 'sunos' in uname:
@@ -146,7 +146,7 @@ def _get_os_brand(os_type):
 			return OSBrand.OpenBSD[0]
 		elif name in 'pcbsd':
 			return OSBrand.PCBSD[0]
-	elif os_type in OSType.Darwin:
+	elif os_type in OSType.MacOS:
 		name = platform.mac_ver()[0].lower()
 		if name.startswith('10'):
 			return OSBrand.OSX[0]
@@ -204,7 +204,7 @@ def _get_os_release(os_type):
 
 		linux_dist = platform.linux_distribution()
 		os_release = linux_dist[1].lower() or dist[1].lower()
-	elif os_type in OSType.Darwin:
+	elif os_type in OSType.MacOS:
 		os_release = platform.mac_ver()[0].lower()
 		#print(platform.release()) # Kernel version: 13.3.0
 	elif os_type in OSType.Solaris:
