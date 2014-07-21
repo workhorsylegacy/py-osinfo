@@ -1,0 +1,15 @@
+
+Make it work on:
+Windows 8
+Windows 8.1
+Windows XP
+PC-BSD
+openSUSE
+Solaris
+OpenIndiana
+
+
+. If we can find a way to get the Windows kernel version, add a kernel field 
+	to each OS.
+. Figure out how to include service pack info in Windows
+
