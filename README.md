@@ -65,6 +65,12 @@ __Mac OS X__
     brand: OSX
     release: 10.9.4
 
+__Open Indiana__
+
+    type: Solaris
+    brand: OpenIndiana
+    release: 151a3
+
 __Ubuntu 14.04__
 
     type: Linux

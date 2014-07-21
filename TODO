@@ -6,7 +6,6 @@ Windows XP
 PC-BSD
 openSUSE
 Solaris
-OpenIndiana
 
 
 . If we can find a way to get the Windows kernel version, add a kernel field 
