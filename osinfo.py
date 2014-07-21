@@ -153,10 +153,9 @@ def _get_os_brand(os_type):
 			return OSBrand.OSX[0]
 	elif os_type in OSType.Linux:
 		if os.path.isfile('/etc/lsb-release-crunchbang'):
-			with open('/etc/lsb-release-crunchbang', 'r') as f:
-				lsb = f.read().lower()
-				if lsb and lsb.split('distrib_id=')[1].startswith('crunchbang'):
-					return OSBrand.CrunchBang[0]
+			return OSBrand.CrunchBang[0]
+		elif os.path.isfile('/etc/sabayon-edition'):
+			return OSBrand.Sabayon[0]
 
 		linux_dist = platform.linux_distribution()
 		name = linux_dist[0].lower() or dist[0].lower()
@@ -204,10 +203,15 @@ def _get_os_release(os_type):
 			with open('/etc/lsb-release-crunchbang', 'r') as f:
 				lsb = f.read().lower()
 				if lsb:
-					return lsb.split('distrib_release=')[1].split("\n")[0]
-
-		linux_dist = platform.linux_distribution()
-		os_release = linux_dist[1].lower() or dist[1].lower()
+					os_release = lsb.split('distrib_release=')[1].split("\n")[0]
+		elif os.path.isfile('/etc/sabayon-edition'):
+			with open('/etc/sabayon-edition', 'r') as f:
+				data = f.read().lower().strip().split()
+				if data and data.length > 2:
+					os_release = data[2]
+		else:
+			linux_dist = platform.linux_distribution()
+			os_release = linux_dist[1].lower() or dist[1].lower()
 	elif os_type in OSType.MacOS:
 		os_release = platform.mac_ver()[0].lower()
 		#print(platform.release()) # Kernel version: 13.3.0
