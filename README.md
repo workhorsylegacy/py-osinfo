@@ -95,6 +95,12 @@ __Windows 7__
     brand: Windows7
     release: 6.1.7601
 
+__Windows XP__
+
+    type: Windows
+    brand: WindowsXP
+    release: 5.1.2600
+
 
 Please submit a pull request with the results for your favorite OS!
 
