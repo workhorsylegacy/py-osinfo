@@ -35,6 +35,12 @@ Run as a library
 Outputs
 -----
 
+__CentOS__
+
+    type: Linux
+    brand: CentOS
+    release: 6.5
+
 __Crunch Bang__
 
     type: Linux
