@@ -47,6 +47,12 @@ __Crunch Bang__
     brand: CrunchBang
     release: 11
 
+__Debian__
+
+    type: Linux
+    brand: Debian
+    release: 7.6
+
 __Fedora 20__
 
     type: Linux
