@@ -101,6 +101,12 @@ __Windows 7__
     brand: Windows7
     release: 6.1.7601
 
+__Windows 8__
+
+    type: Windows
+    brand: Windows8
+    release: 6.2.9200
+
 __Windows XP__
 
     type: Windows
