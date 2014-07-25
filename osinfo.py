@@ -41,9 +41,9 @@ class OSType(object):
 
 	unknown = ['Unknown']
 
-	withoutRoot = [Cygwin, Windows]
-	unix = [BSD, MacOS, Solaris]
-	nix = [BSD, Linux, MacOS, Solaris]
+	withoutRoot = [Cygwin[0], Windows[0]]
+	Unix = [BSD[0], MacOS[0], Solaris[0]]
+	Nix = [BSD[0], Linux[0], MacOS[0], Solaris[0]]
 
 class OSBrand(object):
 	Arch = ['Arch']
