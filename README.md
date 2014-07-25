@@ -89,11 +89,23 @@ __open SUSE__
     brand: openSUSE
     release: 13.1
 
+__Redhat__
+
+    type: Linux
+    brand: Redhat
+    release: 6.5
+
 __Sabayon__
 
     type: Linux
     brand: Sabayon
     release: 5.5
+
+__Scientific Linux__
+
+    type: Linux
+    brand: ScientificLinux
+    release: 6.5
 
 __Ubuntu 14.04__
 

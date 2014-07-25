@@ -84,7 +84,7 @@ class OSBrand(object):
 	PCBSD = ['PCBSD']
 	PCLinuxOS = ['PCLinuxOS']
 	Puppy = ['Puppy']
-	Redhat = ['Redhat']
+	RedHat = ['RedHat']
 	Sabayon = ['Sabayon']
 	Salix = ['Salix']
 	Siduction = ['Siduction']
@@ -169,6 +169,10 @@ def _get_os_brand(os_type):
 			return OSBrand.Fedora[0]
 		elif name in 'linuxmint':
 			return OSBrand.LinuxMint[0]
+		elif name in 'redhat':
+			return OSBrand.RedHat[0]
+		elif name in 'scientific linux':
+			return OSBrand.ScientificLinux[0]
 		elif name in 'suse' or name in 'opensuse':
 			return OSBrand.openSUSE[0]
 		elif name in 'ubuntu':
