@@ -31,6 +31,7 @@ import platform
 
 
 class OSType(object):
+	BeOS = ['BeOS']
 	BSD = ['BSD']
 	Cygwin = ['Cygwin']
 	MacOS = ['MacOS']
@@ -114,7 +115,9 @@ def _get_os_type():
 
 	# Figure out the general OS type
 	uname = platform.system().lower().strip()
-	if 'bsd' in uname:
+	if 'beos' in uname or 'haiku' in uname:
+		os_type = OSType.BeOS[0]
+	elif 'bsd' in uname:
 		os_type = OSType.BSD[0]
 	elif 'cygwin' in uname:
 		os_type = OSType.Cygwin[0]
@@ -133,7 +136,14 @@ def _get_os_brand(os_type):
 	dist = platform.dist()
 
 	# Figure out the brand
-	if os_type in OSType.BSD:
+	if os_type in OSType.BeOS:
+		name = platform.system().lower().strip()
+
+		if name in 'beos':
+			return OSBrand.BeOS[0]
+		elif name in 'haiku':
+			return OSBrand.Haiku[0]
+	elif os_type in OSType.BSD:
 		name = dist[0].lower() or platform.system().lower()
 		name = name.strip()
 
@@ -200,7 +210,9 @@ def _get_os_release(os_type):
 	dist = platform.dist()
 
 	# Figure out the release
-	if os_type in OSType.BSD:
+	if os_type in OSType.BeOS:
+		os_release = platform.release().lower()
+	elif os_type in OSType.BSD:
 		os_release = platform.release().lower().rstrip('-release')
 	elif os_type in OSType.Linux:
 		if os.path.isfile('/etc/lsb-release-crunchbang'):

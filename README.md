@@ -65,6 +65,12 @@ __FreeBSD 10__
     brand: FreeBSD
     release: 10.0
 
+__Haiku__
+
+    type: BeOS
+    brand: Haiku
+    release: 1
+
 __Linux Mint__
 
     type: Linux
