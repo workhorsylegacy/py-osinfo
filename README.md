@@ -20,7 +20,7 @@ Run as a library
 -----
 
     import osinfo
-    os_type, os_brand, os_release = osinfo.get_os_info()
+    os_type, os_brand, os_release, os_kernel = osinfo.get_os_info()
 
     if os_type in osinfo.OSType.linux:
         print("Looks like you're using Linux.")
@@ -83,6 +83,12 @@ __Mac OS X__
     brand: OSX
     release: 10.9.4
 
+__NetBSD__
+
+    type: BSD
+    brand: NetBSD
+    release: 6.1.4
+
 __Open Indiana__
 
     type: Solaris
@@ -94,6 +100,12 @@ __open SUSE__
     type: Linux
     brand: openSUSE
     release: 13.1
+
+__PCBSD__
+
+    type: BSD
+    brand: FreeBSD
+    release: 10.0-release-p13
 
 __Redhat__
 
@@ -130,6 +142,7 @@ __Windows 8__
     type: Windows
     brand: Windows8
     release: 6.2.9200
+	kernel: (6, 2, 9200)
 
 __Windows XP__
 

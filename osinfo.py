@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 # Copyright (c) 2014, Matthew Brennan Jones <matthew.brennan.jones@gmail.com>
-# Py-osinfo is a Python module to get the OS type, brand, and release
+# Py-osinfo is a Python module to get the OS type, brand, release, and kernel
 # It uses a MIT style license
 # It is hosted at: https://github.com/workhorsy/py-osinfo
 # 
@@ -243,19 +243,51 @@ def _get_os_release(os_type):
 	os_release = os_release.strip()
 	return os_release
 
+def _get_os_kernel(os_type):
+	os_kernel = 'unknown'
+
+	if os_type in OSType.BeOS:
+		pass # FIXME
+	elif os_type in OSType.BSD:
+		k = platform.release().split('-')[0].split('.')
+		k = [int(n) for n in k]
+		k = tuple(k)
+		os_kernel = k
+	elif os_type in OSType.Linux:
+		k = platform.uname()[2].split('-')[0]
+		k = [int(n) for n in k]
+		k = tuple(k)
+		os_kernel = k
+	elif os_type in OSType.MacOS:
+		k = platform.release().split('.')
+		k = [int(n) for n in k]
+		k = tuple(k)
+		os_kernel = k
+	elif os_type in OSType.Solaris:
+		pass # FIXME
+	elif os_type in OSType.Windows:
+		k = platform.version().split('.')
+		k = [int(n) for n in k]
+		k = tuple(k)
+		os_kernel = k
+
+	return os_kernel
+
 def get_os_info():
 	os_type = _get_os_type()
 	os_brand = _get_os_brand(os_type)
 	os_release = _get_os_release(os_type)
+	os_kernel = _get_os_kernel(os_type)
 
-	return (os_type, os_brand, os_release)
+	return (os_type, os_brand, os_release, os_kernel)
 
 if __name__ == '__main__':
-	os_type, os_brand, os_release = get_os_info()
+	os_type, os_brand, os_release, os_kernel = get_os_info()
 
 	print('type: {0}'.format(os_type))
 	print('brand: {0}'.format(os_brand))
 	print('release: {0}'.format(os_release))
+	print('kernel: {0}'.format(os_kernel))
 
 
 
