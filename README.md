@@ -82,6 +82,7 @@ __Mac OS X__
     type: MacOS
     brand: OSX
     release: 10.9.4
+	kernel: (13, 3, 0)
 
 __NetBSD__
 
@@ -130,6 +131,7 @@ __Ubuntu 14.04__
     type: Linux
     brand: Ubuntu
     release: 14.04
+	kernel: (3, 13, 0)
 
 __Windows 7__
 

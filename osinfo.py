@@ -254,7 +254,7 @@ def _get_os_kernel(os_type):
 		k = tuple(k)
 		os_kernel = k
 	elif os_type in OSType.Linux:
-		k = platform.uname()[2].split('-')[0]
+		k = platform.uname()[2].split('-')[0].split('.')
 		k = [int(n) for n in k]
 		k = tuple(k)
 		os_kernel = k
