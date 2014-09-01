@@ -267,7 +267,10 @@ def _get_os_kernel(os_type):
 		k = tuple(k)
 		os_kernel = k
 	elif os_type in OSType.Solaris:
-		pass # FIXME
+		k = platform.release()
+		k = [int(n) for n in k]
+		k = tuple(k)
+		os_kernel = k
 	elif os_type in OSType.Windows:
 		k = platform.version().split('.')
 		k = [int(n) for n in k]

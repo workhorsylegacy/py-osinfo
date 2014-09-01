@@ -44,24 +44,27 @@ __CentOS__
     type: Linux
     brand: CentOS
     release: 6.5
+    kernel: (2, 6, 32)
 
 __Crunch Bang__
 
     type: Linux
     brand: CrunchBang
     release: 11
+    kernel: (3, 2, 0)
 
 __Debian__
 
     type: Linux
     brand: Debian
     release: 7.6
+    kernel: (3, 2, 0)
 
 __Fedora 20__
 
     type: Linux
     brand: Fedora
-    release: 20	
+    release: 20
 
 __FreeBSD 10__
 
@@ -74,12 +77,14 @@ __Haiku__
     type: BeOS
     brand: Haiku
     release: 1
+    kernel: (1,)
 
 __Linux Mint__
 
     type: Linux
     brand: LinuxMint
     release: 10.9.4
+    kernel: (3, 11, 10)
 
 __Mac OS X__
 
@@ -99,12 +104,14 @@ __Open Indiana__
     type: Solaris
     brand: OpenIndiana
     release: 151a3
+    kernel: (5, 11)
 
 __open SUSE__
 
     type: Linux
     brand: openSUSE
     release: 13.1
+    kernel: (3, 11, 10)
 
 __PCBSD__
 
@@ -117,18 +124,21 @@ __Redhat__
     type: Linux
     brand: Redhat
     release: 6.5
+    kernel: (2, 6, 32)
 
 __Sabayon__
 
     type: Linux
     brand: Sabayon
     release: 5.5
+    kernel: (2, 6, 37)
 
 __Scientific Linux__
 
     type: Linux
     brand: ScientificLinux
     release: 6.5
+    kernel: (2, 6, 32)
 
 __Ubuntu 14.04__
 
@@ -142,6 +152,7 @@ __Windows 7__
     type: Windows
     brand: Windows7
     release: 6.1.7601
+    kernel: (6, 1, 7601)
 
 __Windows 8__
 
@@ -155,6 +166,7 @@ __Windows XP__
     type: Windows
     brand: WindowsXP
     release: 5.1.2600
+    kernel: (5, 1, 2600)
 
 
 Please submit a pull request with the results for your favorite OS!
