@@ -247,7 +247,10 @@ def _get_os_kernel(os_type):
 	os_kernel = 'unknown'
 
 	if os_type in OSType.BeOS:
-		pass # FIXME
+		k = platform.release()
+		k = [int(n) for n in k]
+		k = tuple(k)
+		os_kernel = k
 	elif os_type in OSType.BSD:
 		k = platform.release().split('-')[0].split('.')
 		k = [int(n) for n in k]

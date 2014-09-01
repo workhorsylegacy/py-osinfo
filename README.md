@@ -1,7 +1,7 @@
 py-osinfo
 =========
 
-Get the OS type, brand, and release with Python.
+Get the OS type, brand, release, and kernel with Python.
 
 Py-osinfo should work without any extra programs or libraries, beyond 
 what your OS provides. The goal is for this to work on every OS that Python 
@@ -14,6 +14,7 @@ Run as a script
     type: Linux
     brand: Slackware
     release: 14.1
+    kernel: (3, 13, 0)
 
 
 Run as a library
@@ -24,6 +25,9 @@ Run as a library
 
     if os_type in osinfo.OSType.linux:
         print("Looks like you're using Linux.")
+
+        if os_kernel < (3, 13, 1):
+            print("Your Linux kernel version is too old!")
 
     if os_brand in osinfo.OSBrand.CentOS:
         print("Looks like you're using CentOS.")
@@ -82,7 +86,7 @@ __Mac OS X__
     type: MacOS
     brand: OSX
     release: 10.9.4
-	kernel: (13, 3, 0)
+    kernel: (13, 3, 0)
 
 __NetBSD__
 
@@ -131,7 +135,7 @@ __Ubuntu 14.04__
     type: Linux
     brand: Ubuntu
     release: 14.04
-	kernel: (3, 13, 0)
+    kernel: (3, 13, 0)
 
 __Windows 7__
 
@@ -144,7 +148,7 @@ __Windows 8__
     type: Windows
     brand: Windows8
     release: 6.2.9200
-	kernel: (6, 2, 9200)
+    kernel: (6, 2, 9200)
 
 __Windows XP__
 
