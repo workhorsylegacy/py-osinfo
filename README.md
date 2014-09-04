@@ -103,7 +103,7 @@ __Open Indiana__
 
     type: Solaris
     brand: OpenIndiana
-    release: 151a3
+    release: 151a8
     kernel: (5, 11)
 
 __open SUSE__
