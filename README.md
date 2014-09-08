@@ -46,6 +46,13 @@ __CentOS__
     release: 6.5
     kernel: (2, 6, 32)
 
+__Cygwin__
+
+    type: Cygwin
+    brand: CYGWIN_NT-6.3
+    release: 1.7.32
+    kernel: (1, 7, 32)
+
 __Crunch Bang__
 
     type: Linux
@@ -85,6 +92,13 @@ __Linux Mint__
     brand: LinuxMint
     release: 10.9.4
     kernel: (3, 11, 10)
+
+__Manjaro__
+
+    type: Linux
+    brand: Manjaro
+    release: 0.8.10
+    kernel: (3, 12, 20)
 
 __Mac OS X__
 
