@@ -41,7 +41,7 @@ class OSType(object):
 
 	unknown = ['Unknown']
 
-	withoutRoot = [Cygwin[0], Windows[0]]
+	withoutRoot = [Cygwin[0], Windows[0], BeOS[0]]
 	Unix = [BSD[0], MacOS[0], Solaris[0]]
 	Nix = [BSD[0], Linux[0], MacOS[0], Solaris[0]]
 
