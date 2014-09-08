@@ -54,6 +54,7 @@ class OSBrand(object):
 	Chakra = ['Chakra']
 	Clonezilla = ['Clonezilla']
 	CrunchBang = ['CrunchBang']
+	Cygwin = ['Cygwin']
 	DamnSmallLinux = ['DamnSmallLinux']
 	Debian = ['Debian']
 	DragonFlyBSD = ['DragonFlyBSD']
@@ -157,6 +158,8 @@ def _get_os_brand(os_type):
 			return OSBrand.OpenBSD[0]
 		elif name in 'pcbsd':
 			return OSBrand.PCBSD[0]
+	elif os_type in OSType.Cygwin:
+                return platform.system()
 	elif os_type in OSType.MacOS:
 		name = platform.mac_ver()[0].lower().strip()
 		if name.startswith('10'):
@@ -214,6 +217,8 @@ def _get_os_release(os_type):
 		os_release = platform.release().lower()
 	elif os_type in OSType.BSD:
 		os_release = platform.release().lower().rstrip('-release')
+	elif os_type in OSType.Cygwin:
+                os_release = platform.release().split('(')[0]
 	elif os_type in OSType.Linux:
 		if os.path.isfile('/etc/lsb-release-crunchbang'):
 			with open('/etc/lsb-release-crunchbang', 'r') as f:
@@ -256,6 +261,11 @@ def _get_os_kernel(os_type):
 		k = [int(n) for n in k]
 		k = tuple(k)
 		os_kernel = k
+	elif os_type in OSType.Cygwin:
+                k = platform.release().split('(')[0].split('.')
+		k = [int(n) for n in k]
+		k = tuple(k)
+		os_kernel = k
 	elif os_type in OSType.Linux:
 		k = platform.uname()[2].split('-')[0].split('.')
 		k = [int(n) for n in k]
@@ -294,7 +304,3 @@ if __name__ == '__main__':
 	print('brand: {0}'.format(os_brand))
 	print('release: {0}'.format(os_release))
 	print('kernel: {0}'.format(os_kernel))
-
-
-
-
