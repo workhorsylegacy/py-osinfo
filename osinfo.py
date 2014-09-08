@@ -262,7 +262,7 @@ def _get_os_kernel(os_type):
 		k = tuple(k)
 		os_kernel = k
 	elif os_type in OSType.Cygwin:
-                k = platform.release().split('(')[0].split('.')
+		k = platform.release().split('(')[0].split('.')
 		k = [int(n) for n in k]
 		k = tuple(k)
 		os_kernel = k
