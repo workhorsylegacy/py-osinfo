@@ -1,7 +1,7 @@
 py-osinfo
 =========
 
-Get the OS type, brand, release, and kernel with Python.
+A module for getting the OS type, brand, release, and kernel with Python 2 & 3
 
 Py-osinfo should work without any extra programs or libraries, beyond 
 what your OS provides. The goal is for this to work on every OS that Python 
