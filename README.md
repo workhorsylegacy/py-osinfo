@@ -127,6 +127,13 @@ __open SUSE__
     release: 13.1
     kernel: (3, 11, 10)
 
+__Open SXCE__
+
+    type: Solaris
+    brand: OpenSXCE
+    release: pensxce2014.05__illumos20140505
+    kernel: (5, 11)
+
 __PCBSD__
 
     type: BSD

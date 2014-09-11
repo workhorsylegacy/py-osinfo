@@ -79,6 +79,7 @@ class OSBrand(object):
 	OpenIndiana = ['OpenIndiana']
 	OpenSolaris = ['OpenSolaris']
 	openSUSE = ['openSUSE']
+	OpenSXCE = ['OpenSXCE']
 	OracleLinux = ['OracleLinux']
 	OSX = ['OSX']
 	Parsix = ['Parsix']
@@ -204,6 +205,8 @@ def _get_os_brand(os_type):
 		ver = platform.version().lower().strip()
 		if ver.startswith('oi_'):
 			return OSBrand.OpenIndiana[0]
+		elif 'opensxce' in ver:
+			return OSBrand.OpenSXCE[0]
 	elif os_type in OSType.Windows:
 		name = platform.release().lower().strip()
 
