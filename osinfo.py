@@ -197,6 +197,8 @@ def _get_os_brand(os_type):
 			return OSBrand.RedHat[0]
 		elif name in 'scientific linux':
 			return OSBrand.ScientificLinux[0]
+		elif name in 'slackware':
+			return OSBrand.Slackware[0]
 		elif name in 'suse' or name in 'opensuse':
 			return OSBrand.openSUSE[0]
 		elif name in 'ubuntu':
