@@ -5,7 +5,7 @@
 # Py-osinfo is a Python module to get the OS type, brand, release, and kernel
 # It uses a MIT style license
 # It is hosted at: https://github.com/workhorsy/py-osinfo
-# 
+#
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
 # "Software"), to deal in the Software without restriction, including
@@ -13,10 +13,10 @@
 # distribute, sublicense, and/or sell copies of the Software, and to
 # permit persons to whom the Software is furnished to do so, subject to
 # the following conditions:
-# 
+#
 # The above copyright notice and this permission notice shall be included
 # in all copies or substantial portions of the Software.
-# 
+#
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 # EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 # MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -44,6 +44,7 @@ class OSType(object):
 	withoutRoot = [Cygwin[0], Windows[0], BeOS[0]]
 	Unix = [BSD[0], MacOS[0], Solaris[0]]
 	Nix = [BSD[0], Linux[0], MacOS[0], Solaris[0]]
+
 
 class OSBrand(object):
 	Arch = ['Arch']
@@ -112,6 +113,7 @@ class OSBrand(object):
 
 	unknown = ['Unknown']
 
+
 def _get_os_type():
 	os_type = OSType.unknown[0]
 
@@ -133,6 +135,7 @@ def _get_os_type():
 		os_type = OSType.Windows[0]
 
 	return os_type
+
 
 def _get_os_brand(os_type):
 	dist = platform.dist()
@@ -160,7 +163,7 @@ def _get_os_brand(os_type):
 		elif name in 'pcbsd':
 			return OSBrand.PCBSD[0]
 	elif os_type in OSType.Cygwin:
-                return platform.system()
+		return platform.system()
 	elif os_type in OSType.MacOS:
 		name = platform.mac_ver()[0].lower().strip()
 		if name.startswith('10'):
@@ -223,6 +226,7 @@ def _get_os_brand(os_type):
 
 	return OSBrand.unknown[0]
 
+
 def _get_os_release(os_type):
 	os_release = 'unknown'
 	dist = platform.dist()
@@ -233,7 +237,7 @@ def _get_os_release(os_type):
 	elif os_type in OSType.BSD:
 		os_release = platform.release().lower().rstrip('-release')
 	elif os_type in OSType.Cygwin:
-                os_release = platform.release().split('(')[0]
+		os_release = platform.release().split('(')[0]
 	elif os_type in OSType.Linux:
 		if os.path.isfile('/etc/lsb-release-crunchbang'):
 			with open('/etc/lsb-release-crunchbang', 'r') as f:
@@ -256,7 +260,6 @@ def _get_os_release(os_type):
 			os_release = linux_dist[1].lower() or dist[1].lower()
 	elif os_type in OSType.MacOS:
 		os_release = platform.mac_ver()[0].lower()
-		#print(platform.release()) # Kernel version: 13.3.0
 	elif os_type in OSType.Solaris:
 		ver = platform.version().lower()
 		os_release = ver.lstrip('oi_')
@@ -264,10 +267,9 @@ def _get_os_release(os_type):
 		dist = platform.version().lower()
 		os_release = dist
 
-	#cygwin = ['Cygwin']
-
 	os_release = os_release.strip()
 	return os_release
+
 
 def _get_os_kernel(os_type):
 	os_kernel = 'unknown'
@@ -309,6 +311,7 @@ def _get_os_kernel(os_type):
 		os_kernel = k
 
 	return os_kernel
+
 
 def get_os_info():
 	os_type = _get_os_type()
