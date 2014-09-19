@@ -3,6 +3,7 @@ all:
 	@echo build: Builds the python source dist package
 	@echo install: Installs python source dist package
 	@echo clean: Removes any generated files
+	@echo rst: uses pandoc to generate the README.rst file from README.md
 
 clean:
 	rm -f -rf py_osinfo.egg-info
@@ -26,6 +27,10 @@ install: remove
 
 remove:
 	sudo rm -f -rf /usr/local/lib/python2.7/dist-packages/py_osinfo-0.1.0-py2.7.egg
+
+rst:
+	rm -f -rf README.rst
+	pandoc --from=markdown --to=rst --output=README.rst README.md
 
 
 
