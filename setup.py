@@ -21,7 +21,7 @@ Cygwin, and Haiku.
 ''',
     license = "MIT",
     url = "https://github.com/workhorsy/py-osinfo",
-    packages=['src'],
+    packages=['osinfo'],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Topic :: Utilities",
