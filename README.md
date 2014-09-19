@@ -7,6 +7,17 @@ Py-osinfo should work without any extra programs or libraries, beyond
 what your OS provides. The goal is for this to work on every OS that Python 
 supports. Works on Linux, OS X, Windows, BSD, Solaris, Cygwin, and Haiku.
 
+
+Pip install
+-----
+
+sudo pip install py-osinfo
+sudo pip3 install py-osinfo
+
+# This will require you to do
+from osinfo import osinfo
+
+
 Run as a script
 -----
 
