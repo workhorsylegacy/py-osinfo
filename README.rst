@@ -12,10 +12,9 @@ and Haiku.
 Pip install
 -----------
 
-sudo pip install py-osinfo sudo pip3 install py-osinfo
+sudo pip install py-osinfo
 
-This will require you to do
-===========================
+sudo pip3 install py-osinfo
 
 from osinfo import osinfo
 
