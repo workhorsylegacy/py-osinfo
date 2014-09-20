@@ -1,6 +1,10 @@
 py-osinfo
 =========
 
+[![Downloads](https://pypip.in/d/py-osinfo/badge.png?period=month)](https://pypi.python.org/pypi/py-osinfo/)
+[![Latest Version](https://pypip.in/v/py-osinfo/badge.png)](https://pypi.python.org/pypi/py-osinfo/)
+[![License](https://pypip.in/license/py-osinfo/badge.png)](https://pypi.python.org/pypi/py-osinfo/)
+
 A module for getting the OS type, brand, release, and kernel with Python 2 & 3
 
 Py-osinfo should work without any extra programs or libraries, beyond 
