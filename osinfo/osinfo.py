@@ -28,9 +28,11 @@
 
 import os
 import platform
+import subprocess
 
 
 class OSType(object):
+	Android = ['Android']
 	BeOS = ['BeOS']
 	BSD = ['BSD']
 	Cygwin = ['Cygwin']
@@ -47,6 +49,18 @@ class OSType(object):
 
 
 class OSBrand(object):
+	AndroidAlpha = ['AndroidAlpha']
+	AndroidBeta = ['AndroidBeta']
+	AndroidCupcake = ['AndroidCupcake']
+	AndroidDonut = ['AndroidDonut']
+	AndroidEclair = ['AndroidEclair']
+	AndroidFroyo = ['AndroidFroyo']
+	AndroidGingerbread = ['AndroidGingerbread']
+	AndroidHoneycomb = ['AndroidHoneycomb']
+	AndroidIceCreamSandwich = ['AndroidIceCreamSandwich']
+	AndroidJellyBean = ['AndroidJellyBean']
+	AndroidKitKat = ['AndroidKitKat']
+	AndroidUnofficial = ['AndroidUnofficial']
 	Arch = ['Arch']
 	ArchBang = ['ArchBang']
 	BeOS = ['BeOS']
@@ -114,6 +128,12 @@ class OSBrand(object):
 	unknown = ['Unknown']
 
 
+def run_and_get_stdout(command):
+	try:
+		return subprocess.check_call(['',  command])
+	except subprocess.CalledProcessError as ex:
+		return None
+	
 def _get_os_type():
 	os_type = OSType.unknown[0]
 
@@ -128,7 +148,11 @@ def _get_os_type():
 	elif 'darwin' in uname:
 		os_type = OSType.MacOS[0]
 	elif 'linux' in uname:
-		os_type = OSType.Linux[0]
+		is_android = run_and_get_stdout('getprop | grep -i "ro.com.google.clientidbase"') != None
+		if is_android:
+			os_type = OSType.Android[0]
+		else:
+			os_type = OSType.Linux[0]
 	elif 'solaris' in uname or 'sunos' in uname:
 		os_type = OSType.Solaris[0]
 	elif 'windows' in uname:
@@ -141,7 +165,38 @@ def _get_os_brand(os_type):
 	dist = platform.dist()
 
 	# Figure out the brand
-	if os_type in OSType.BeOS:
+	if os_type in OSType.Android:
+		release = run_and_get_stdout('getprop | grep -i "ro.build.version.release"')
+		release = release.split(']: [')[1].split(']')[0]
+		release = [int(n) for n in release]
+		release = tuple(release)
+
+		# http://en.wikipedia.org/wiki/Android_version_history
+		if release >= (4, 4) and release <= (4, 4, 4):
+			return AndroidKitKat[0]
+		elif release >= (4, 1) and release <= (4, 3, 2):
+			return AndroidJellyBean[0]
+		elif release >= (4, 0) and release <= (4, 0, 4):
+			return AndroidIceCreamSandwich[0]
+		elif release >= (3, 0) and release <= (3, 2, 6):
+			return AndroidHoneycomb[0]
+		elif release >= (2, 3) and release <= (2, 3, 7):
+			return AndroidGingerbread[0]
+		elif release >= (2, 2) and release <= (2, 2, 3):
+			return AndroidFroyo[0]
+		elif release >= (2, 0) and release <= (2, 1):
+			return AndroidEclair[0]
+		elif release == (1, 6):
+			return AndroidDonut[0]
+		elif release == (1, 5):
+			return AndroidCupcake[0]
+		elif release == (1, 1):
+			return AndroidBeta[0]
+		elif release == (1, 0):
+			return AndroidAlpha[0]
+		else:
+			return AndroidUnofficial[0]
+	elif os_type in OSType.BeOS:
 		name = platform.system().lower().strip()
 
 		if name in 'beos':
@@ -232,7 +287,11 @@ def _get_os_release(os_type):
 	dist = platform.dist()
 
 	# Figure out the release
-	if os_type in OSType.BeOS:
+	if os_type in OSType.Android:
+		release = run_and_get_stdout('getprop | grep -i "ro.build.version.release"')
+		if release:
+			os_release = release.split(']: [')[1].split(']')[0]
+	elif os_type in OSType.BeOS:
 		os_release = platform.release().lower()
 	elif os_type in OSType.BSD:
 		os_release = platform.release().lower().rstrip('-release')
@@ -274,7 +333,16 @@ def _get_os_release(os_type):
 def _get_os_kernel(os_type):
 	os_kernel = 'unknown'
 
-	if os_type in OSType.BeOS:
+	if os_type in OSType.Android:
+		version = run_and_get_stdout('cat /proc/version')
+		if version:
+			k = version.lower().split('linux version')[1].split('(')[0]
+			k = k.split('-')[0]
+			k = k.split('.')
+			k = [int(n) for n in k]
+			k = tuple(k)
+			os_kernel = k
+	elif os_type in OSType.BeOS:
 		k = platform.release()
 		k = [int(n) for n in k]
 		k = tuple(k)
