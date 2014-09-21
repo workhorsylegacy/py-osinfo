@@ -10,7 +10,7 @@ with open(os.path.join(os.getcwd(), 'README.rst'), 'r') as f:
 
 setup(
     name = "py-osinfo",
-    version = "0.2.0",
+    version = "0.1.1",
     author = "Matthew Brennan Jones",
     author_email = "matthew.brennan.jones@gmail.com",
     description = 
