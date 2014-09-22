@@ -128,12 +128,6 @@ class OSBrand(object):
 	unknown = ['Unknown']
 
 
-def run_and_get_stdout(command):
-	try:
-		return subprocess.check_call(['',  command])
-	except subprocess.CalledProcessError as ex:
-		return None
-	
 def _get_os_type():
 	os_type = OSType.unknown[0]
 
@@ -148,7 +142,7 @@ def _get_os_type():
 	elif 'darwin' in uname:
 		os_type = OSType.MacOS[0]
 	elif 'linux' in uname:
-		is_android = run_and_get_stdout('getprop | grep -i "ro.com.google.clientidbase"') != None
+		is_android = run_and_pipe_and_get_stdout(['getprop'], ['grep', '-i', '"ro.com.google.clientidbase"']) != None
 		if is_android:
 			os_type = OSType.Android[0]
 		else:
@@ -166,7 +160,7 @@ def _get_os_brand(os_type):
 
 	# Figure out the brand
 	if os_type in OSType.Android:
-		release = run_and_get_stdout('getprop | grep -i "ro.build.version.release"')
+		release = run_and_pipe_and_get_stdout(['getprop'], ['grep',  '-i',  '"ro.build.version.release"'])
 		release = release.split(']: [')[1].split(']')[0]
 		release = [int(n) for n in release]
 		release = tuple(release)
@@ -288,7 +282,7 @@ def _get_os_release(os_type):
 
 	# Figure out the release
 	if os_type in OSType.Android:
-		release = run_and_get_stdout('getprop | grep -i "ro.build.version.release"')
+		release = run_and_pipe_and_get_stdout(['getprop'], ['grep', '-i', '"ro.build.version.release"'])
 		if release:
 			os_release = release.split(']: [')[1].split(']')[0]
 	elif os_type in OSType.BeOS:
@@ -334,7 +328,7 @@ def _get_os_kernel(os_type):
 	os_kernel = 'unknown'
 
 	if os_type in OSType.Android:
-		version = run_and_get_stdout('cat /proc/version')
+		version = run_and_get_stdout(['cat',  '/proc/version'])
 		if version:
 			k = version.lower().split('linux version')[1].split('(')[0]
 			k = k.split('-')[0]
@@ -388,6 +382,34 @@ def get_os_info():
 	os_kernel = _get_os_kernel(os_type)
 
 	return (os_type, os_brand, os_release, os_kernel)
+
+def run_and_get_stdout(command):
+	# Run the command
+	p1 = subprocess.Popen(command, stdout=subprocess.PIPE)
+	output = p1.communicate()[0]
+	p1.wait()
+	
+	# Get the return code
+	rc = p1.returncode
+	if hasattr(os, 'WIFEXITED') and os.WIFEXITED(rc):
+		rc = os.WEXITSTATUS(rc)
+	
+	return (rc, output)
+
+def run_and_pipe_and_get_stdout(from_command, to_command):
+	# Run the from command and pipe it to the to command
+	p1 = subprocess.Popen(from_command, stdout=subprocess.PIPE)
+	p2 = subprocess.Popen(to_command, stdin=p1.stdout, stdout=subprocess.PIPE)
+	p1.stdout.close()
+	output = p2.communicate()[0]
+	
+	# Get the return code
+	rc = p2.returncode
+	if hasattr(os, 'WIFEXITED') and os.WIFEXITED(rc):
+		rc = os.WEXITSTATUS(rc)
+	
+	return (rc, output)
+
 
 if __name__ == '__main__':
 	os_type, os_brand, os_release, os_kernel = get_os_info()
