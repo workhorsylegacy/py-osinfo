@@ -142,7 +142,7 @@ def _get_os_type():
 	elif 'darwin' in uname:
 		os_type = OSType.MacOS[0]
 	elif 'linux' in uname:
-		is_android = run_and_pipe_and_get_output(['getprop'], ['grep', '-i', '"ro.com.google.clientidbase"'])[1] != None
+		is_android = run_and_pipe_and_get_output(['getprop'], ['grep', '-i', 'ro.com.google.clientidbase'])[1] != None
 		if is_android:
 			os_type = OSType.Android[0]
 		else:
@@ -160,7 +160,7 @@ def _get_os_brand(os_type):
 
 	# Figure out the brand
 	if os_type in OSType.Android:
-		release = run_and_pipe_and_get_output(['getprop'], ['grep',  '-i',  '"ro.build.version.release"'])[1]
+		release = run_and_pipe_and_get_output(['getprop'], ['grep',  '-i',  'ro.build.version.release'])[1]
 		release = release.split(']: [')[1].split(']')[0]
 		release = [int(n) for n in release]
 		release = tuple(release)
@@ -282,7 +282,7 @@ def _get_os_release(os_type):
 
 	# Figure out the release
 	if os_type in OSType.Android:
-		release = run_and_pipe_and_get_output(['getprop'], ['grep', '-i', '"ro.build.version.release"'])[1]
+		release = run_and_pipe_and_get_output(['getprop'], ['grep', '-i', 'ro.build.version.release'])[1]
 		if release:
 			os_release = release.split(']: [')[1].split(']')[0]
 	elif os_type in OSType.BeOS:
