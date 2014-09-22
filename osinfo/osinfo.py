@@ -142,7 +142,7 @@ def _get_os_type():
 	elif 'darwin' in uname:
 		os_type = OSType.MacOS[0]
 	elif 'linux' in uname:
-		is_android = run_and_pipe_and_get_stdout(['getprop'], ['grep', '-i', '"ro.com.google.clientidbase"']) != None
+		is_android = run_and_pipe_and_get_output(['getprop'], ['grep', '-i', '"ro.com.google.clientidbase"'])[1] != None
 		if is_android:
 			os_type = OSType.Android[0]
 		else:
@@ -160,7 +160,7 @@ def _get_os_brand(os_type):
 
 	# Figure out the brand
 	if os_type in OSType.Android:
-		release = run_and_pipe_and_get_stdout(['getprop'], ['grep',  '-i',  '"ro.build.version.release"'])
+		release = run_and_pipe_and_get_output(['getprop'], ['grep',  '-i',  '"ro.build.version.release"'])[1]
 		release = release.split(']: [')[1].split(']')[0]
 		release = [int(n) for n in release]
 		release = tuple(release)
@@ -282,7 +282,7 @@ def _get_os_release(os_type):
 
 	# Figure out the release
 	if os_type in OSType.Android:
-		release = run_and_pipe_and_get_stdout(['getprop'], ['grep', '-i', '"ro.build.version.release"'])
+		release = run_and_pipe_and_get_output(['getprop'], ['grep', '-i', '"ro.build.version.release"'])[1]
 		if release:
 			os_release = release.split(']: [')[1].split(']')[0]
 	elif os_type in OSType.BeOS:
@@ -328,7 +328,7 @@ def _get_os_kernel(os_type):
 	os_kernel = 'unknown'
 
 	if os_type in OSType.Android:
-		version = run_and_get_stdout(['cat',  '/proc/version'])
+		version = run_and_get_output(['cat',  '/proc/version'])[1]
 		if version:
 			k = version.lower().split('linux version')[1].split('(')[0]
 			k = k.split('-')[0]
@@ -383,32 +383,43 @@ def get_os_info():
 
 	return (os_type, os_brand, os_release, os_kernel)
 
-def run_and_get_stdout(command):
+
+def run_and_get_output(command):
 	# Run the command
-	p1 = subprocess.Popen(command, stdout=subprocess.PIPE)
-	output = p1.communicate()[0]
-	p1.wait()
+	p1, stdout, stderr = None, None, None
+	try:
+		p1 = subprocess.Popen(command, stdout=subprocess.PIPE)
+		stdout, stderr = p1.communicate()
+		p1.wait()
+	except Exception as ex:
+		return (-1, None, str(ex))
 	
 	# Get the return code
 	rc = p1.returncode
 	if hasattr(os, 'WIFEXITED') and os.WIFEXITED(rc):
 		rc = os.WEXITSTATUS(rc)
 	
-	return (rc, output)
+	return (rc, stdout, stderr)
 
-def run_and_pipe_and_get_stdout(from_command, to_command):
-	# Run the from command and pipe it to the to command
-	p1 = subprocess.Popen(from_command, stdout=subprocess.PIPE)
-	p2 = subprocess.Popen(to_command, stdin=p1.stdout, stdout=subprocess.PIPE)
+
+def run_and_pipe_and_get_output(from_command, to_command):
+	# Run the "from" command and pipe it to the "to" command
+	p1, p2 = None, None
+	try:
+		p1 = subprocess.Popen(from_command, stdout=subprocess.PIPE)
+		p2 = subprocess.Popen(to_command, stdin=p1.stdout, stdout=subprocess.PIPE)
+	except Exception as ex:
+		return (-1, None, str(ex))
+
 	p1.stdout.close()
-	output = p2.communicate()[0]
+	stdout, stderr = p2.communicate()
 	
 	# Get the return code
 	rc = p2.returncode
 	if hasattr(os, 'WIFEXITED') and os.WIFEXITED(rc):
 		rc = os.WEXITSTATUS(rc)
 	
-	return (rc, output)
+	return (rc, stdout, stderr)
 
 
 if __name__ == '__main__':
@@ -418,3 +429,5 @@ if __name__ == '__main__':
 	print('brand: {0}'.format(os_brand))
 	print('release: {0}'.format(os_release))
 	print('kernel: {0}'.format(os_kernel))
+
+
