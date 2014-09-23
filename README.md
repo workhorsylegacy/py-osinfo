@@ -5,8 +5,6 @@ py-osinfo
 [![Latest Version](https://pypip.in/v/py-osinfo/badge.png)](https://pypi.python.org/pypi/py-osinfo/)
 [![License](https://pypip.in/license/py-osinfo/badge.png)](https://pypi.python.org/pypi/py-osinfo/)
 
-A module for getting the OS type, brand, release, and kernel with Python 2 & 3
-
 Py-osinfo should work without any extra programs or libraries, beyond 
 what your OS provides. The goal is for this to work on every OS that Python 
 supports. Works on Linux, OS X, Windows, BSD, Solaris, Cygwin, and Haiku.
@@ -25,7 +23,7 @@ from osinfo import osinfo
 Run as a script
 -----
 
-    $ python osinfo.py
+    $ python osinfo/osinfo.py
     type: Linux
     brand: Slackware
     release: 14.1
@@ -35,7 +33,7 @@ Run as a script
 Run as a library
 -----
 
-    import osinfo
+    from osinfo import osinfo
     os_type, os_brand, os_release, os_kernel = osinfo.get_os_info()
 
     if os_type in osinfo.OSType.linux:
