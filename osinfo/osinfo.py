@@ -151,23 +151,23 @@ def _get_os_brand(os_type):
 	if os_type in OSType.BeOS:
 		name = platform.system().strip().strip('"').lower()
 
-		if name in 'beos':
+		if 'beos' == name:
 			return OSBrand.BeOS[0]
-		elif name in 'haiku':
+		elif 'haiku' == name:
 			return OSBrand.Haiku[0]
 	elif os_type in OSType.BSD:
 		name = dist[0] or platform.system()
 		name = name.strip().strip('"').lower()
 
-		if name in 'dragonflybsd':
+		if 'dragonflybsd' == name:
 			return OSBrand.DragonFlyBSD[0]
-		elif name in 'freebsd':
+		elif 'freebsd' == name:
 			return OSBrand.FreeBSD[0]
-		elif name in 'netbsd':
+		elif 'netbsd' == name:
 			return OSBrand.NetBSD[0]
-		elif name in 'openbsd':
+		elif 'openbsd' == name:
 			return OSBrand.OpenBSD[0]
-		elif name in 'pcbsd':
+		elif name == 'pcbsd':
 			return OSBrand.PCBSD[0]
 	elif os_type in OSType.Cygwin:
 		return platform.system()
@@ -193,42 +193,42 @@ def _get_os_brand(os_type):
 					name = name.lower()
 					if 'manjaro' in name:
 						return OSBrand.Manjaro[0]
-		elif name in 'centos':
+		elif 'centos' == name:
 			return OSBrand.CentOS[0]
-		elif name in 'debian':
+		elif 'debian' == name:
 			return OSBrand.Debian[0]
-		elif name in 'fedora':
+		elif 'fedora' == name:
 			return OSBrand.Fedora[0]
-		elif name in 'linuxmint':
+		elif 'linuxmint' == name:
 			return OSBrand.LinuxMint[0]
-		elif name in 'manjaro':
+		elif 'manjaro' == name:
 			return OSBrand.Manjaro[0]
-		elif name in 'redhat':
+		elif 'redhat' == name:
 			return OSBrand.RedHat[0]
-		elif name in 'scientific linux':
+		elif 'scientific linux' == name:
 			return OSBrand.ScientificLinux[0]
-		elif name in 'slackware':
+		elif 'slackware' == name:
 			return OSBrand.Slackware[0]
-		elif name in 'suse' or name in 'opensuse':
+		elif 'suse' == name or 'opensuse' == name:
 			return OSBrand.openSUSE[0]
-		elif name in 'ubuntu':
+		elif 'ubuntu' == name:
 			return OSBrand.Ubuntu[0]
 	elif os_type in OSType.Solaris:
 		ver = platform.version().strip().strip('"').lower()
 		if ver.startswith('oi_'):
 			return OSBrand.OpenIndiana[0]
-		elif 'opensxce' in ver:
+		elif 'opensxce' == ver:
 			return OSBrand.OpenSXCE[0]
 	elif os_type in OSType.Windows:
 		name = platform.release().strip().strip('"').lower()
 
-		if name in 'xp':
+		if 'xp' == name:
 			return OSBrand.WindowsXP[0]
-		elif name in 'vista':
+		elif 'vista' == name:
 			return OSBrand.WindowsVista[0]
-		elif name in '7':
+		elif '7' == name:
 			return OSBrand.Windows7[0]
-		elif name in '8':
+		elif '8' == name:
 			return OSBrand.Windows8[0]
 
 	return OSBrand.unknown[0]
