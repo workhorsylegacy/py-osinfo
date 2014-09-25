@@ -160,7 +160,7 @@ def _get_os_brand(os_type):
 		name = name.strip().strip('"').lower()
 
 		if 'debian' == name:
-			return OSBrand.Debian[0]
+			return OSBrand.Debian[0] # ok
 		elif 'dragonflybsd' == name:
 			return OSBrand.DragonFlyBSD[0]
 		elif 'freebsd' == name:
@@ -182,6 +182,8 @@ def _get_os_brand(os_type):
 			return OSBrand.CrunchBang[0]
 		elif os.path.isfile('/etc/sabayon-edition'):
 			return OSBrand.Sabayon[0]
+		elif os.path.isfile('/etc/arh-release'):
+			return OSBrand.Arch[0] # ok
 
 		linux_dist = platform.linux_distribution()
 		name = linux_dist[0] or dist[0]
@@ -204,7 +206,7 @@ def _get_os_brand(os_type):
 		elif 'elementary os' == name:
 			return OSBrand.elementary[0] # ok
 		elif 'linuxmint' == name:
-			return OSBrand.LinuxMint[0]
+			return OSBrand.LinuxMint[0] # ok
 		elif 'mageia' == name:
 			return OSBrand.Mageia[0] # ok
 		elif 'mandrake' == name:
@@ -223,8 +225,10 @@ def _get_os_brand(os_type):
 		ver = platform.version().strip().strip('"').lower()
 		if ver.startswith('oi_'): # ok
 			return OSBrand.OpenIndiana[0]
-		elif 'opensxce' == ver:
+		elif ver.startswith('opensxce'): # ok
 			return OSBrand.OpenSXCE[0]
+		elif platform.uname()[1].strip().lower() == 'opensolaris':
+			return OSBrand.OpenSolaris[0] # ok
 	elif os_type in OSType.Windows:
 		name = platform.release().strip().strip('"').lower()
 

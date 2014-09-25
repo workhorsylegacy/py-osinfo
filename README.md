@@ -80,6 +80,13 @@ __Debian__
     release: 7.6
     kernel: (3, 2, 0)
 
+__Debian BSD__
+
+    type: BSD
+    brand: Debian
+    release: 8.0-1-486
+    kernel: (8, 0)	
+
 __elementary__
 
     type: Linux
@@ -111,8 +118,8 @@ __Linux Mint__
 
     type: Linux
     brand: LinuxMint
-    release: 10.9.4
-    kernel: (3, 11, 10)
+    release: 17
+    kernel: (3, 13, 0)
 
 __Mageia__
 
@@ -146,6 +153,13 @@ __Open Indiana__
     type: Solaris
     brand: OpenIndiana
     release: 151a8
+    kernel: (5, 11)
+
+__Open Solaris__
+
+    type: Solaris
+    brand: OpenSolaris
+    release: svn_111b
     kernel: (5, 11)
 
 __open SUSE__
