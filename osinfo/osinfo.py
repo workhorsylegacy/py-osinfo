@@ -76,12 +76,10 @@ class OSBrand(object):
 	FreeBSD = ['FreeBSD']
 	Gentoo = ['Gentoo'] # FIXME: Add this OS
 	GoboLinux = ['GoboLinux'] # FIXME: Add this OS
-	Haiku = ['Haiku'] # FIXME: Add this OS
+	Haiku = ['Haiku']
 	Kali = ['Kali'] # FIXME: Add this OS
 	KNOPPIX = ['KNOPPIX'] # FIXME: Add this OS
-	Kubuntu = ['Kubuntu'] # FIXME: Add this OS
 	LinuxMint = ['LinuxMint']
-	Lubuntu = ['Lubuntu'] # FIXME: Add this OS
 	LXLE = ['LXLE'] # FIXME: Add this OS
 	Mageia = ['Mageia']
 	Manjaro = ['Manjaro']
@@ -112,14 +110,12 @@ class OSBrand(object):
 	Tanglu = ['Tanglu'] # FIXME: Add this OS
 	Trisquel = ['Trisquel'] # FIXME: Add this OS
 	Ubuntu = ['Ubuntu']
-	UbuntuStudio = ['UbuntuStudio'] # FIXME: Add this OS
 	UltimateEdition = ['UltimateEdition'] # FIXME: Add this OS
 	Vector = ['Vector'] # FIXME: Add this OS
 	WindowsXP = ['WindowsXP']
 	WindowsVista = ['WindowsVista']
 	Windows7 = ['Windows7']
 	Windows8 = ['Windows8']
-	Xubuntu = ['Xubuntu'] # FIXME: Add this OS
 	Zorin = ['Zorin'] # FIXME: Add this OS
 
 	unknown = ['Unknown']
