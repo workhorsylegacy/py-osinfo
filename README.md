@@ -153,7 +153,7 @@ __Milax__
     type: Solaris
     brand: Milax
     release: Milax_0.3.2
-	kernel: 5.11
+	kernel: (5, 11)
 
 __Mac OS X__
 
@@ -173,7 +173,7 @@ __Nexenta__
     type: Solaris
     brand: Nexenta
     release: NexentaOS_20081207
-	kernel: 5.11
+	kernel: (5, 11)
 
 __Open Indiana__
 

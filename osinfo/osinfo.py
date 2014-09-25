@@ -59,7 +59,7 @@ class OSBrand(object):
 	AndroidJellyBean = ['AndroidJellyBean']
 	AndroidKitKat = ['AndroidKitKat']
 	AndroidUnofficial = ['AndroidUnofficial']
-	Arch = ['Arch'] # FIXME: Add this OS
+	Arch = ['Arch']
 	ArchBang = ['ArchBang'] # FIXME: Add this OS
 	BeOS = ['BeOS']
 	Bodhi = ['Bodhi'] # FIXME: Add this OS
@@ -91,7 +91,7 @@ class OSBrand(object):
 	Nexenta = ['Nexenta']
 	OpenBSD = ['OpenBSD'] # FIXME: Add this OS
 	OpenIndiana = ['OpenIndiana']
-	OpenSolaris = ['OpenSolaris'] # FIXME: Add this OS
+	OpenSolaris = ['OpenSolaris']
 	openSUSE = ['openSUSE']
 	OpenSXCE = ['OpenSXCE']
 	OracleLinux = ['OracleLinux'] # FIXME: Add this OS
