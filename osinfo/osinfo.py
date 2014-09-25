@@ -205,11 +205,10 @@ def _get_os_brand(os_type):
 			return OSBrand.elementary[0] # ok
 		elif 'linuxmint' == name:
 			return OSBrand.LinuxMint[0]
-		elif name == 'mandrake':
-			if 'mangeia' == linux_dist()[0].strip().lower():
-				return OSBrand.Mangeia[0]
-			else:
-				return OSBrand.Mandrake[0]
+		elif 'mageia' == name:
+			return OSBrand.Mageia[0] # ok
+		elif 'mandrake' == name:
+			return OSBrand.Mandrake[0]
 		elif 'redhat' == name:
 			return OSBrand.RedHat[0]
 		elif 'scientific linux' == name:

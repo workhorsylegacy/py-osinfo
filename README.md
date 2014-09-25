@@ -114,10 +114,10 @@ __Linux Mint__
     release: 10.9.4
     kernel: (3, 11, 10)
 
-__Mangeia__
+__Mageia__
 
     type: Linux
-    brand: Mangeia
+    brand: Mageia
     release: 2
     kernel:  (3, 4, 69)
 
