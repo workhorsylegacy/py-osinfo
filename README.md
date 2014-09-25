@@ -80,11 +80,19 @@ __Debian__
     release: 7.6
     kernel: (3, 2, 0)
 
+__elementary__
+
+    type: Linux
+    brand: elementary
+    release: 0.2.1
+    kernel: (3, 2, 0)
+
 __Fedora 20__
 
     type: Linux
     brand: Fedora
     release: 20
+    kernel: (3, 16, 2)
 
 __FreeBSD 10__
 
@@ -105,6 +113,13 @@ __Linux Mint__
     brand: LinuxMint
     release: 10.9.4
     kernel: (3, 11, 10)
+
+__Mangeia__
+
+    type: Linux
+    brand: Mangeia
+    release: 2
+    kernel:  (3, 4, 69)
 
 __Manjaro__
 

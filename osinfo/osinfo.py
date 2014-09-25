@@ -71,7 +71,7 @@ class OSBrand(object):
 	DamnSmallLinux = ['DamnSmallLinux'] # FIXME: Add this OS
 	Debian = ['Debian']
 	DragonFlyBSD = ['DragonFlyBSD'] # FIXME: Add this OS
-	elementary = ['elementary'] # FIXME: Add this OS
+	elementary = ['elementary']
 	Fedora = ['Fedora']
 	FreeBSD = ['FreeBSD']
 	Gentoo = ['Gentoo'] # FIXME: Add this OS
@@ -128,7 +128,7 @@ def _get_os_type():
 	uname = platform.system().strip().strip('"').lower()
 	if 'beos' in uname or 'haiku' in uname:
 		os_type = OSType.BeOS[0]
-	elif 'bsd' in uname:
+	elif 'bsd' in uname or 'gnu/kfreebsd' in uname:
 		os_type = OSType.BSD[0]
 	elif 'cygwin' in uname:
 		os_type = OSType.Cygwin[0]
@@ -153,13 +153,15 @@ def _get_os_brand(os_type):
 
 		if 'beos' == name:
 			return OSBrand.BeOS[0]
-		elif 'haiku' == name:
+		elif 'haiku' == name: # ok
 			return OSBrand.Haiku[0]
 	elif os_type in OSType.BSD:
 		name = dist[0] or platform.system()
 		name = name.strip().strip('"').lower()
 
-		if 'dragonflybsd' == name:
+		if 'debian' == name:
+			return OSBrand.Debian[0]
+		elif 'dragonflybsd' == name:
 			return OSBrand.DragonFlyBSD[0]
 		elif 'freebsd' == name:
 			return OSBrand.FreeBSD[0]
@@ -191,31 +193,36 @@ def _get_os_brand(os_type):
 					name = f.read()
 					name = name.split('DISTRIB_ID=')[1].split('\n')[0]
 					name = name.lower()
-					if 'manjaro' in name:
+					if 'manjaro' in name: # ok
 						return OSBrand.Manjaro[0]
 		elif 'centos' == name:
 			return OSBrand.CentOS[0]
 		elif 'debian' == name:
-			return OSBrand.Debian[0]
+			return OSBrand.Debian[0] # ok
 		elif 'fedora' == name:
-			return OSBrand.Fedora[0]
+			return OSBrand.Fedora[0] # ok
+		elif 'elementary os' == name:
+			return OSBrand.elementary[0] # ok
 		elif 'linuxmint' == name:
 			return OSBrand.LinuxMint[0]
-		elif 'manjaro' == name:
-			return OSBrand.Manjaro[0]
+		elif name == 'mandrake':
+			if 'mangeia' == linux_dist()[0].strip().lower():
+				return OSBrand.Mangeia[0]
+			else:
+				return OSBrand.Mandrake[0]
 		elif 'redhat' == name:
 			return OSBrand.RedHat[0]
 		elif 'scientific linux' == name:
-			return OSBrand.ScientificLinux[0]
+			return OSBrand.ScientificLinux[0] # ok
 		elif 'slackware' == name:
 			return OSBrand.Slackware[0]
 		elif 'suse' == name or 'opensuse' == name:
-			return OSBrand.openSUSE[0]
+			return OSBrand.openSUSE[0] # ok
 		elif 'ubuntu' == name:
-			return OSBrand.Ubuntu[0]
+			return OSBrand.Ubuntu[0] # ok
 	elif os_type in OSType.Solaris:
 		ver = platform.version().strip().strip('"').lower()
-		if ver.startswith('oi_'):
+		if ver.startswith('oi_'): # ok
 			return OSBrand.OpenIndiana[0]
 		elif 'opensxce' == ver:
 			return OSBrand.OpenSXCE[0]
@@ -228,7 +235,7 @@ def _get_os_brand(os_type):
 			return OSBrand.WindowsVista[0]
 		elif '7' == name:
 			return OSBrand.Windows7[0]
-		elif '8' == name:
+		elif '8' == name: # ok
 			return OSBrand.Windows8[0]
 
 	return OSBrand.unknown[0]
