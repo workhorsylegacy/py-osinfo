@@ -51,6 +51,12 @@ Run as a library
 
 Outputs
 -----
+__Arch__
+
+    type: Linux
+    brand: Arch
+    release: 
+    kernel: (3, 10, 9)
 
 __CentOS__
 
@@ -128,12 +134,26 @@ __Mageia__
     release: 2
     kernel:  (3, 4, 69)
 
+__Mandriva__
+
+    type: Linux
+    brand: Mandriva
+    release: 2009.1
+    kernel: (2, 6, 29)
+
 __Manjaro__
 
     type: Linux
     brand: Manjaro
     release: 0.8.10
     kernel: (3, 12, 20)
+
+__Milax__
+
+    type: Solaris
+    brand: Milax
+    release: Milax_0.3.2
+	kernel: 5.11
 
 __Mac OS X__
 
@@ -147,6 +167,13 @@ __NetBSD__
     type: BSD
     brand: NetBSD
     release: 6.1.4
+
+__Nexenta__
+
+    type: Solaris
+    brand: Nexenta
+    release: NexentaOS_20081207
+	kernel: 5.11
 
 __Open Indiana__
 
@@ -202,6 +229,13 @@ __Scientific Linux__
     brand: ScientificLinux
     release: 6.5
     kernel: (2, 6, 32)
+
+__Slackware__
+
+    type: Linux
+    brand: Slackware
+    release: 13.0.0.0.0
+    kernel: (2, 6, 29)
 
 __Ubuntu 14.04__
 

@@ -83,8 +83,12 @@ class OSBrand(object):
 	LXLE = ['LXLE'] # FIXME: Add this OS
 	Mageia = ['Mageia']
 	Manjaro = ['Manjaro']
+	Mandrake = ['Mandrake']
+	Mandriva = ['Mandriva']
 	MEPIS = ['MEPIS'] # FIXME: Add this OS
+	Milax = ['Milax']
 	NetBSD = ['NetBSD'] # FIXME: Add this OS
+	Nexenta = ['Nexenta']
 	OpenBSD = ['OpenBSD'] # FIXME: Add this OS
 	OpenIndiana = ['OpenIndiana']
 	OpenSolaris = ['OpenSolaris'] # FIXME: Add this OS
@@ -211,24 +215,30 @@ def _get_os_brand(os_type):
 			return OSBrand.Mageia[0] # ok
 		elif 'mandrake' == name:
 			return OSBrand.Mandrake[0]
+		elif 'mandriva' == name:
+			return OSBrand.Mandriva[0] # ok
 		elif 'redhat' == name:
 			return OSBrand.RedHat[0]
 		elif 'scientific linux' == name:
 			return OSBrand.ScientificLinux[0] # ok
 		elif 'slackware' == name:
-			return OSBrand.Slackware[0]
+			return OSBrand.Slackware[0] # ok
 		elif 'suse' == name or 'opensuse' == name:
 			return OSBrand.openSUSE[0] # ok
 		elif 'ubuntu' == name:
 			return OSBrand.Ubuntu[0] # ok
 	elif os_type in OSType.Solaris:
 		ver = platform.version().strip().strip('"').lower()
-		if ver.startswith('oi_'): # ok
-			return OSBrand.OpenIndiana[0]
-		elif ver.startswith('opensxce'): # ok
-			return OSBrand.OpenSXCE[0]
+		if ver.startswith('milax'):
+			return OSBrand.Milax[0] # ok
+		elif ver.startswith('oi_'):
+			return OSBrand.OpenIndiana[0] # ok
+		elif ver.startswith('opensxce'):
+			return OSBrand.OpenSXCE[0] # ok
 		elif platform.uname()[1].strip().lower() == 'opensolaris':
 			return OSBrand.OpenSolaris[0] # ok
+		elif ver.startswith('nexenta'):
+			return OSBrand.Nexenta[0] # ok
 	elif os_type in OSType.Windows:
 		name = platform.release().strip().strip('"').lower()
 
