@@ -120,6 +120,12 @@ class OSBrand(object):
 	WindowsVista = ['WindowsVista']
 	Windows7 = ['Windows7']
 	Windows8 = ['Windows8']
+	WindowsServer2003 = ['WindowsServer2003']
+	WindowsServer2003R2 = ['WindowsServer2003R2']
+	WindowsServer2008 = ['WindowsServer2008']
+	WindowsServer2008R2 = ['WindowsServer2008R2']
+	WindowsServer2012 = ['WindowsServer2012']
+	WindowsServer2012R2 = ['WindowsServer2012R2']
 	Zorin = ['Zorin'] # FIXME: Add this OS
 
 	unknown = ['Unknown']
@@ -252,6 +258,18 @@ def _get_os_brand(os_type):
 			return OSBrand.Windows7[0]
 		elif '8' == name: # ok
 			return OSBrand.Windows8[0]
+		elif 'server2003' == name:
+			return WindowsServer2003[0]
+		elif 'server2003r2' == name:
+			return WindowsServer2003R2[0]
+		elif 'server2008' == name:
+			return WindowsServer2008[0]
+		elif 'server2008r2' == name:
+			return WindowsServer2008R2[0]
+		elif 'server2012' == name:
+			return WindowsServer2012[0]
+		elif 'server2012r2' == name:
+			return WindowsServer2012R2[0]
 
 	return OSBrand.unknown[0]
 
