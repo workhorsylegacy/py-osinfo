@@ -251,22 +251,22 @@ def _get_os_brand(os_type):
 		name = platform.release().strip().strip('"').lower()
 
 		if 'xp' == name:
-			return OSBrand.WindowsXP[0]
+			return OSBrand.WindowsXP[0] # ok
 		elif 'vista' == name:
-			return OSBrand.WindowsVista[0]
-		elif '7' == name:
-			return OSBrand.Windows7[0]
-		elif '8' == name: # ok
-			return OSBrand.Windows8[0]
+			return OSBrand.WindowsVista[0] # ok
+		elif '7' == name: 
+			return OSBrand.Windows7[0] # ok
+		elif '8' == name:
+			return OSBrand.Windows8[0] # ok
 		elif '2003server' == name:
-			return WindowsServer2003[0]
+			return WindowsServer2003[0] # ok
 		elif '2003serverr2' == name:
 			return WindowsServer2003R2[0]
 		elif '2008server' == name:
-			return WindowsServer2008[0]
+			return WindowsServer2008[0] # ok
 		elif '2008serverr2' == name:
-			return WindowsServer2008R2[0]
-		elif 'server2012' == name:
+			return WindowsServer2008R2[0] # ok
+		elif '2012server' == name:
 			return WindowsServer2012[0]
 		elif '2012serverrc' == name:
 			return WindowsServer2012R2[0]
