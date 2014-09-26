@@ -209,6 +209,8 @@ def _get_os_brand(os_type):
 			return OSBrand.Fedora[0] # ok
 		elif 'elementary os' == name:
 			return OSBrand.elementary[0] # ok
+		elif 'gentoo' in name:
+			return OSBrand.Gentoo[0] # ok
 		elif 'linuxmint' == name:
 			return OSBrand.LinuxMint[0] # ok
 		elif 'mageia' == name:
