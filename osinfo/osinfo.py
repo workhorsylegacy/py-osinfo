@@ -168,7 +168,7 @@ def _get_os_brand(os_type):
 		elif 'dragonflybsd' == name:
 			return OSBrand.DragonFlyBSD[0]
 		elif 'freebsd' == name:
-			return OSBrand.FreeBSD[0]
+			return OSBrand.FreeBSD[0] # ok
 		elif 'netbsd' == name:
 			return OSBrand.NetBSD[0]
 		elif 'openbsd' == name:
@@ -180,7 +180,7 @@ def _get_os_brand(os_type):
 	elif os_type in OSType.MacOS:
 		name = platform.mac_ver()[0].strip().strip('"').lower()
 		if name.startswith('10'):
-			return OSBrand.OSX[0]
+			return OSBrand.OSX[0] # ok
 	elif os_type in OSType.Linux:
 		if os.path.isfile('/etc/lsb-release-crunchbang'):
 			return OSBrand.CrunchBang[0]
