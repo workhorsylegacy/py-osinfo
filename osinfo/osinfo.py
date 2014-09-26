@@ -74,7 +74,7 @@ class OSBrand(object):
 	elementary = ['elementary']
 	Fedora = ['Fedora']
 	FreeBSD = ['FreeBSD']
-	Gentoo = ['Gentoo'] # FIXME: Add this OS
+	Gentoo = ['Gentoo']
 	GoboLinux = ['GoboLinux'] # FIXME: Add this OS
 	Haiku = ['Haiku']
 	Kali = ['Kali'] # FIXME: Add this OS
