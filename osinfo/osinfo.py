@@ -186,7 +186,7 @@ def _get_os_brand(os_type):
 			return OSBrand.CrunchBang[0]
 		elif os.path.isfile('/etc/sabayon-edition'):
 			return OSBrand.Sabayon[0]
-		elif os.path.isfile('/etc/arh-release'):
+		elif os.path.isfile('/etc/arch-release'):
 			return OSBrand.Arch[0] # ok
 
 		linux_dist = platform.linux_distribution()
@@ -205,10 +205,10 @@ def _get_os_brand(os_type):
 			return OSBrand.CentOS[0]
 		elif 'debian' == name:
 			return OSBrand.Debian[0] # ok
-		elif 'fedora' == name:
-			return OSBrand.Fedora[0] # ok
 		elif 'elementary os' == name:
 			return OSBrand.elementary[0] # ok
+		elif 'fedora' == name:
+			return OSBrand.Fedora[0] # ok
 		elif 'gentoo' in name:
 			return OSBrand.Gentoo[0] # ok
 		elif 'linuxmint' == name:
