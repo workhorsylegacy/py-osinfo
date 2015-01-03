@@ -10,14 +10,12 @@ what your OS provides. The goal is for this to work on every OS that Python
 supports. Works on Linux, OS X, Windows, BSD, Solaris, Cygwin, and Haiku.
 
 
-Pip install
+Install
 -----
 
-sudo pip install py-osinfo
-
-sudo pip3 install py-osinfo
-
-from osinfo import osinfo
+~~~bash
+pip install py-osinfo
+~~~
 
 
 Run as a script
