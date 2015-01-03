@@ -18,6 +18,9 @@ setup(
     license = "MIT",
     url = "https://github.com/workhorsy/py-osinfo",
     packages=['osinfo'],
+    entry_points = {
+        'console_scripts': ['osinfo=osinfo.osinfo:main'],
+    },
     classifiers=[
         "Development Status :: 4 - Beta",
         "Topic :: Utilities",
