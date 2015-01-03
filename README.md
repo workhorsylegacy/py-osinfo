@@ -47,7 +47,7 @@ if os_brand in osinfo.OSBrand.CentOS:
     print("Looks like you're using CentOS.")
 
 if os_release == '99.01':
-    print("OMG CentOS from 2099. Can I see the sorce code?")
+    print("OMG CentOS from 2099. Can I see the source code?")
 ~~~
 
 Outputs
