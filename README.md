@@ -33,21 +33,22 @@ Run as a script
 Run as a library
 -----
 
-    from osinfo import osinfo
-    os_type, os_brand, os_release, os_kernel = osinfo.get_os_info()
+~~~python
+from osinfo import osinfo
+os_type, os_brand, os_release, os_kernel = osinfo.get_os_info()
 
-    if os_type in osinfo.OSType.linux:
-        print("Looks like you're using Linux.")
+ if os_type in osinfo.OSType.linux:
+    print("Looks like you're using Linux.")
 
-        if os_kernel < (3, 13, 1):
-            print("Your Linux kernel version is too old!")
+    if os_kernel < (3, 13, 1):
+        print("Your Linux kernel version is too old!")
 
-    if os_brand in osinfo.OSBrand.CentOS:
-        print("Looks like you're using CentOS.")
+if os_brand in osinfo.OSBrand.CentOS:
+    print("Looks like you're using CentOS.")
 
-    if os_release == '99.01':
-        print("OMG CentOS from 2099. Can I see the sorce code?")
-
+if os_release == '99.01':
+    print("OMG CentOS from 2099. Can I see the sorce code?")
+~~~
 
 Outputs
 -----
