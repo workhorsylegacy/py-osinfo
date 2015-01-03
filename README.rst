@@ -12,11 +12,10 @@ and Haiku.
 Pip install
 -----------
 
-sudo pip install py-osinfo
+.. code-block:: bash
 
-sudo pip3 install py-osinfo
+    pip install py-osinfo
 
-from osinfo import osinfo
 
 Run as a script
 ---------------
@@ -32,7 +31,7 @@ Run as a script
 Run as a library
 ----------------
 
-::
+.. code-block:: python
 
     import osinfo
     os_type, os_brand, os_release, os_kernel = osinfo.get_os_info()
