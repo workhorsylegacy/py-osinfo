@@ -135,7 +135,7 @@ def _get_os_type():
 	os_type = OSType.unknown[0]
 
 	# Figure out the general OS type
-	uname = platform.system().strip().strip('"').lower()
+	uname = platform.system().strip().strip('"').strip("'").strip().lower()
 	if 'beos' in uname or 'haiku' in uname:
 		os_type = OSType.BeOS[0]
 	elif 'bsd' in uname or 'gnu/kfreebsd' in uname:
@@ -159,7 +159,7 @@ def _get_os_brand(os_type):
 
 	# Figure out the brand
 	if os_type in OSType.BeOS:
-		name = platform.system().strip().strip('"').lower()
+		name = platform.system().strip().strip('"').strip("'").strip().lower()
 
 		if 'beos' == name:
 			return OSBrand.BeOS[0]
