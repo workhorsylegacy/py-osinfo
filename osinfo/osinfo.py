@@ -179,7 +179,7 @@ def _get_os_brand(os_type):
 			return OSBrand.NetBSD[0]
 		elif 'openbsd' == name:
 			return OSBrand.OpenBSD[0]
-		elif name == 'pcbsd':
+		elif 'pcbsd' == name:
 			return OSBrand.PCBSD[0]
 	elif os_type in OSType.Cygwin:
 		return platform.system()
