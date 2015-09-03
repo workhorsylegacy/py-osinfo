@@ -1,9 +1,10 @@
 py-osinfo
 =========
 
-[![Downloads](https://pypip.in/d/py-osinfo/badge.png?period=month)](https://pypi.python.org/pypi/py-osinfo/)
-[![Latest Version](https://pypip.in/v/py-osinfo/badge.png)](https://pypi.python.org/pypi/py-osinfo/)
-[![License](https://pypip.in/license/py-osinfo/badge.png)](https://pypi.python.org/pypi/py-osinfo/)
+[![Downloads](https://img.shields.io/pypi/dm/py-osinfo.svg)](https://pypi.python.org/pypi/py-osinfo/)
+[![Latest Version](https://img.shields.io/pypi/v/py-osinfo.svg)](https://pypi.python.org/pypi/py-osinfo/)
+[![License](https://img.shields.io/pypi/l/py-osinfo.svg)](https://pypi.python.org/pypi/py-osinfo/)
+[![License](https://img.shields.io/pypi/pyversions/py-osinfo.svg)](https://pypi.python.org/pypi/py-osinfo/)
 
 Py-osinfo should work without any extra programs or libraries, beyond 
 what your OS provides. The goal is for this to work on every OS that Python 
