@@ -1,6 +1,43 @@
 py-osinfo
 =========
 
+ 
+ &nbsp;
+ 
+ &nbsp;
+
+
+:warning: :warning: :warning: :warning: :warning: :warning: :warning: :warning:
+:warning: :warning: :warning: :warning: :warning: :warning: :warning: :warning:
+:warning: :warning: :warning: :warning: :warning: :warning: :warning: :warning:
+
+:warning: :warning: :warning: :warning: :warning: :warning: :warning: :warning:
+:warning: :warning: :warning: :warning: :warning: :warning: :warning: :warning:
+:warning: :warning: :warning: :warning: :warning: :warning: :warning: :warning:
+
+!!! WARNING !!!
+=========
+
+As of September 2017, this project is deprecated.
+
+
+ 
+ :warning: :warning: :warning: :warning: :warning: :warning: :warning: :warning:
+ :warning: :warning: :warning: :warning: :warning: :warning: :warning: :warning:
+ :warning: :warning: :warning: :warning: :warning: :warning: :warning: :warning:
+
+:warning: :warning: :warning: :warning: :warning: :warning: :warning: :warning:
+:warning: :warning: :warning: :warning: :warning: :warning: :warning: :warning:
+:warning: :warning: :warning: :warning: :warning: :warning: :warning: :warning:
+ 
+ &nbsp;
+ 
+ &nbsp;
+ 
+ &nbsp;
+ 
+ &nbsp;
+
 [![Downloads](https://img.shields.io/pypi/dm/py-osinfo.svg)](https://pypi.python.org/pypi/py-osinfo/)
 [![Latest Version](https://img.shields.io/pypi/v/py-osinfo.svg)](https://pypi.python.org/pypi/py-osinfo/)
 [![License](https://img.shields.io/pypi/l/py-osinfo.svg)](https://pypi.python.org/pypi/py-osinfo/)
