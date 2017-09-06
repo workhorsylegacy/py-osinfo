@@ -18,7 +18,7 @@ py-osinfo
 !!! WARNING !!!
 =========
 
-As of September 2017, this project is deprecated.
+As of September 2017, this project is deprecated. Use https://github.com/nir0s/distro instead.
 
 
  
